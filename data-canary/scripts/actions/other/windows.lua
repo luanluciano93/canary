@@ -1,19 +1,18 @@
 local windowId = {}
 
 for index, value in ipairs(WindowTable) do
-    if not table.contains(windowId, value.openWindow) then
-        table.insert(windowId, value.openWindow)
-    end
+	if not table.contains(windowId, value.openWindow) then
+		table.insert(windowId, value.openWindow)
+	end
 
-    if not table.contains(windowId, value.closedWindow) then
-        table.insert(windowId, value.closedWindow)
-    end
+	if not table.contains(windowId, value.closedWindow) then
+		table.insert(windowId, value.closedWindow)
+	end
 end
 
 local windows = Action()
 
 function windows.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-
 	local tile = Tile(fromPosition)
 	local house = tile and tile:getHouse()
 	if not house then
@@ -35,8 +34,8 @@ function windows.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 
 	for index, value in ipairs(WindowTable) do
 		if value.closedWindow == item.itemid then
-				item:transform(value.openWindow)
-				return true
+			item:transform(value.openWindow)
+			return true
 		end
 	end
 
@@ -49,7 +48,7 @@ function windows.onUse(player, item, fromPosition, target, toPosition, isHotkey)
 end
 
 for index, value in ipairs(windowId) do
-    windows:id(value)
+	windows:id(value)
 end
 
 windows:register()

@@ -7,16 +7,16 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(32676, 32743, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32676, 32744, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32676, 32745, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32676, 32741, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32676, 32742, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32678, 32741, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32678, 32742, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32678, 32743, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32678, 32744, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT},
-		{pos = Position(32678, 32745, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT}
+		{ pos = Position(32676, 32743, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32676, 32744, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32676, 32745, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32676, 32741, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32676, 32742, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32678, 32741, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32678, 32742, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32678, 32743, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32678, 32744, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32678, 32745, 11), teleport = Position(32726, 32733, 11), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(32712, 32723, 11),
@@ -31,5 +31,5 @@ function scourgeOfOblivionLever.onUse(player, item, fromPosition, target, toPosi
 	return CreateDefaultLeverBoss(player, config)
 end
 
-scourgeOfOblivionLever:position({x = 32675, y = 32743, z = 11})
+scourgeOfOblivionLever:position({ x = 32675, y = 32743, z = 11 })
 scourgeOfOblivionLever:register()

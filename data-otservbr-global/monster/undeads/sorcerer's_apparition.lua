@@ -24,7 +24,7 @@ monster.Bestiary = {
 	Stars = 5,
 	Occurrence = 0,
 	Locations = "Mirrored Nightmare."
-	}
+}
 
 monster.health = 25000
 monster.maxHealth = 25000
@@ -73,33 +73,33 @@ monster.light = {
 monster.voices = {
 	interval = 5000,
 	chance = 10,
-	{text = "I'll take your place when you are gone.", yell = false}
+	{ text = "I'll take your place when you are gone.", yell = false }
 }
 
 monster.loot = {
-	{name = "crystal coin", chance = 70540},
-	{name = "platinum coin", chance = 81920, maxCount = 33},
-	{name = "great mana potion", chance = 71920, maxCount = 5},
-	{id = 281, chance = 54560}, -- giant shimmering pearl (green)
-	{id = 282, chance = 54560}, -- giant shimmering pearl (brown)
-	{name = "blue gem", chance = 64560},
-	{id = 23533, chance = 29000}, -- ring of red plasma
-	{name = "wand of voodoo", chance = 31920},
-	{name = "wand of defiance", chance = 25920},
-	{name = "wand of everblazing", chance = 20920},
-	{name = "alloy legs", chance = 17920},
-	{id = 23529, chance = 29000}, -- ring of blue plasma
-	{id = 23531, chance = 29000}, -- ring of green plasma
-	{name = "wand of starstorm", chance = 11920}
+	{ name = "crystal coin", chance = 70540 },
+	{ name = "platinum coin", chance = 81920, maxCount = 33 },
+	{ name = "great mana potion", chance = 71920, maxCount = 5 },
+	{ id = 281, chance = 54560 }, -- giant shimmering pearl (green)
+	{ id = 282, chance = 54560 }, -- giant shimmering pearl (brown)
+	{ name = "blue gem", chance = 64560 },
+	{ id = 23533, chance = 29000 }, -- ring of red plasma
+	{ name = "wand of voodoo", chance = 31920 },
+	{ name = "wand of defiance", chance = 25920 },
+	{ name = "wand of everblazing", chance = 20920 },
+	{ name = "alloy legs", chance = 17920 },
+	{ id = 23529, chance = 29000 }, -- ring of blue plasma
+	{ id = 23531, chance = 29000 }, -- ring of green plasma
+	{ name = "wand of starstorm", chance = 11920 }
 }
 
 monster.attacks = {
-	{name ="melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -800},
-	{name ="combat", interval = 2000, chance = 13, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -900, range = 7, radius = 4, shootEffect = CONST_ANI_ICE, effect = CONST_ME_BIGCLOUDS, target = true},
-	{name ="combat", interval = 2000, chance = 17, type = COMBAT_HOLYDAMAGE, minDamage = -750, maxDamage = -900, radius = 4, effect = CONST_ME_HOLYAREA, target = false},
-	{name ="combat", interval = 2000, chance = 20, type = COMBAT_HOLYDAMAGE, minDamage = -750, maxDamage = -1100, range = 7, shootEffect = CONST_ANI_HOLY, effect = CONST_ME_HOLYDAMAGE, target = true},
-	{name ="combat", interval = 2000, chance = 15, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -1100, range = 7, shootEffect = CONST_ANI_SMALLICE, effect = CONST_ME_ICEATTACK, target = true},
-	{name ="combat", interval = 2000, chance = 13, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -900, radius = 3, effect = CONST_ME_ICEATTACK, target = false}
+	{ name = "melee", interval = 2000, chance = 100, minDamage = 0, maxDamage = -800 },
+	{ name = "combat", interval = 2000, chance = 13, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -900, range = 7, radius = 4, shootEffect = CONST_ANI_ICE, effect = CONST_ME_BIGCLOUDS, target = true },
+	{ name = "combat", interval = 2000, chance = 17, type = COMBAT_HOLYDAMAGE, minDamage = -750, maxDamage = -900, radius = 4, effect = CONST_ME_HOLYAREA, target = false },
+	{ name = "combat", interval = 2000, chance = 20, type = COMBAT_HOLYDAMAGE, minDamage = -750, maxDamage = -1100, range = 7, shootEffect = CONST_ANI_HOLY, effect = CONST_ME_HOLYDAMAGE, target = true },
+	{ name = "combat", interval = 2000, chance = 15, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -1100, range = 7, shootEffect = CONST_ANI_SMALLICE, effect = CONST_ME_ICEATTACK, target = true },
+	{ name = "combat", interval = 2000, chance = 13, type = COMBAT_ICEDAMAGE, minDamage = -750, maxDamage = -900, radius = 3, effect = CONST_ME_ICEATTACK, target = false }
 	-- Chain: const_me-> CONST_ME_BLUE_ENERGY_SPARK, combat_t->COMBAT_ICEDAMAGE
 }
 
@@ -109,23 +109,23 @@ monster.defenses = {
 }
 
 monster.elements = {
-	{type = COMBAT_PHYSICALDAMAGE, percent = -20},
-	{type = COMBAT_ENERGYDAMAGE, percent = 0},
-	{type = COMBAT_EARTHDAMAGE, percent = 0},
-	{type = COMBAT_FIREDAMAGE, percent = -20},
-	{type = COMBAT_LIFEDRAIN, percent = 0},
-	{type = COMBAT_MANADRAIN, percent = 0},
-	{type = COMBAT_DROWNDAMAGE, percent = 0},
-	{type = COMBAT_ICEDAMAGE, percent = 30},
-	{type = COMBAT_HOLYDAMAGE , percent = 40},
-	{type = COMBAT_DEATHDAMAGE , percent = -20}
+	{ type = COMBAT_PHYSICALDAMAGE, percent = -20 },
+	{ type = COMBAT_ENERGYDAMAGE, percent = 0 },
+	{ type = COMBAT_EARTHDAMAGE, percent = 0 },
+	{ type = COMBAT_FIREDAMAGE, percent = -20 },
+	{ type = COMBAT_LIFEDRAIN, percent = 0 },
+	{ type = COMBAT_MANADRAIN, percent = 0 },
+	{ type = COMBAT_DROWNDAMAGE, percent = 0 },
+	{ type = COMBAT_ICEDAMAGE, percent = 30 },
+	{ type = COMBAT_HOLYDAMAGE, percent = 40 },
+	{ type = COMBAT_DEATHDAMAGE, percent = -20 }
 }
 
 monster.immunities = {
-	{type = "paralyze", condition = true},
-	{type = "outfit", condition = true},
-	{type = "invisible", condition = true},
-	{type = "bleed", condition = false}
+	{ type = "paralyze", condition = true },
+	{ type = "outfit", condition = true },
+	{ type = "invisible", condition = true },
+	{ type = "bleed", condition = false }
 }
 
 mType:register(monster)

@@ -4,11 +4,11 @@ local config = {
 	timeToFightAgain = 20, -- In hour
 	timeToDefeatBoss = 20, -- In minutes
 	playerPositions = {
-		{pos = Position(33893, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33894, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33895, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33896, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33897, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33893, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33894, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33895, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33896, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33897, 31388, 15), teleport = Position(33904, 31356, 14), effect = CONST_ME_TELEPORT }
 	},
 	bossPosition = Position(33904, 31351, 14),
 	specPos = {
@@ -49,7 +49,7 @@ function ratmiralLever.onUse(player, item, fromPosition, target, toPosition, isH
 			for _, v in pairs(info) do
 				local newPlayer = v.creature
 				if newPlayer then
-					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face ".. config.bossName .. " again!")
+					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face " .. config.bossName .. " again!")
 					if newPlayer:getStorageValue(config.storage) > os.time() then
 						newPlayer:getPosition():sendMagicEffect(CONST_ME_POFF)
 					end
@@ -90,5 +90,5 @@ function ratmiralLever.onUse(player, item, fromPosition, target, toPosition, isH
 	end
 end
 
-ratmiralLever:position({x = 33892, y = 31388, z = 15})
+ratmiralLever:position({ x = 33892, y = 31388, z = 15 })
 ratmiralLever:register()

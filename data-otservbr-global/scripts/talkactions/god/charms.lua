@@ -6,12 +6,12 @@ function addCharm.onSay(player, words, param)
 	end
 	local usage = "/addcharms PLAYER NAME,AMOUNT"
 	if param == "" then
-		player:sendCancelMessage("Command param required. Usage: ".. usage)
+		player:sendCancelMessage("Command param required. Usage: " .. usage)
 		return false
 	end
 	local split = param:split(",")
 	if not split[2] then
-		player:sendCancelMessage("Insufficient parameters. Usage: ".. usage)
+		player:sendCancelMessage("Insufficient parameters. Usage: " .. usage)
 		return false
 	end
 	local target = Player(split[1])
@@ -26,8 +26,8 @@ function addCharm.onSay(player, words, param)
 	target:sendCancelMessage("Received " .. split[2] .. " charm points!")
 	target:addCharmPoints(tonumber(split[2]))
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
+
 addCharm:separator(" ")
 addCharm:register()
 
@@ -51,7 +51,6 @@ function resetCharm.onSay(player, words, param)
 	target:sendCancelMessage("Reseted your charm points!")
 	target:resetCharmsBestiary()
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 resetCharm:separator(" ")
@@ -77,7 +76,6 @@ function charmExpansion.onSay(player, words, param)
 	target:sendCancelMessage("Received charm expansion!")
 	target:charmExpansion(true)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 charmExpansion:separator(" ")
@@ -103,7 +101,6 @@ function charmRune.onSay(player, words, param)
 	target:sendCancelMessage("Received all charm runes!")
 	target:unlockAllCharmRunes()
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 charmRune:separator(" ")
@@ -118,12 +115,12 @@ function setBestiary.onSay(player, words, param)
 
 	local usage = "/setbestiary PLAYER NAME,MONSTER NAME,AMOUNT"
 	if param == "" then
-		player:sendCancelMessage("Command param required. Usage: ".. usage)
+		player:sendCancelMessage("Command param required. Usage: " .. usage)
 		return false
 	end
 	local split = param:split(",")
 	if not split[3] then
-		player:sendCancelMessage("Insufficient parameters. Usage: ".. usage)
+		player:sendCancelMessage("Insufficient parameters. Usage: " .. usage)
 		return false
 	end
 	local target = Player(split[1])
@@ -137,7 +134,7 @@ function setBestiary.onSay(player, words, param)
 
 	local monsterName = split[2]
 	local mType = MonsterType(monsterName)
-	if not(mType) or (mType and mType:raceId() == 0) then
+	if not (mType) or (mType and mType:raceId() == 0) then
 		player:sendCancelMessage("This monster has no bestiary. Type the name exactly as in game.")
 		return false
 	end
@@ -147,12 +144,11 @@ function setBestiary.onSay(player, words, param)
 		return false
 	end
 
-	player:sendCancelMessage("Set bestiary kill of monster '".. monsterName .. "' from player '" .. target:getName() .. "' to '" .. amount .. "'.")
-	target:sendCancelMessage("Updated kills of monster '".. monsterName .. "'!")
+	player:sendCancelMessage("Set bestiary kill of monster '" .. monsterName .. "' from player '" .. target:getName() .. "' to '" .. amount .. "'.")
+	target:sendCancelMessage("Updated kills of monster '" .. monsterName .. "'!")
 	target:addBestiaryKill(monsterName, amount)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
 end
-
 
 setBestiary:separator(" ")
 setBestiary:register()

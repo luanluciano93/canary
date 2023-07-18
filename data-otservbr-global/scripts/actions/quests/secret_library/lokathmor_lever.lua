@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(32721, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32722, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32723, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32724, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32725, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT}
+		{ pos = Position(32721, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32722, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32723, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32724, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32725, 32749, 10), teleport = Position(32751, 32685, 10), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(32742, 32681, 10),
@@ -26,5 +26,5 @@ function lokathmorLever.onUse(player, item, fromPosition, target, toPosition, is
 	return CreateDefaultLeverBoss(player, config)
 end
 
-lokathmorLever:position({x = 32720, y = 32749, z = 10})
+lokathmorLever:position({ x = 32720, y = 32749, z = 10 })
 lokathmorLever:register()

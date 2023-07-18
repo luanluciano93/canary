@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(33455, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33456, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33457, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33458, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33459, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33455, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33456, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33457, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33458, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33459, 31493, 13), teleport = Position(33455, 31464, 13), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33447, 31464, 13),
@@ -26,5 +26,5 @@ function dukeKruleLever.onUse(player, item, fromPosition, target, toPosition, is
 	return CreateDefaultLeverBoss(player, config)
 end
 
-dukeKruleLever:position({x = 33454, y = 31493, z = 13})
+dukeKruleLever:position({ x = 33454, y = 31493, z = 13 })
 dukeKruleLever:register()

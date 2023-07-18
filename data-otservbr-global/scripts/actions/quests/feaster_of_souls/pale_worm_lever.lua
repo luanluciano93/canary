@@ -7,16 +7,16 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 25 * 60,
 	playerPositions = {
-		{pos = Position(33772, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33773, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33774, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33775, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33773, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33774, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33775, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33773, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33774, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33775, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33772, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33773, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33774, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33775, 31504, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33773, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33774, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33775, 31503, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33773, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33774, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33775, 31505, 14), teleport = Position(33808, 31515, 14), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33793, 31496, 14),
@@ -31,5 +31,5 @@ function paleWormLever.onUse(player, item, fromPosition, target, toPosition, isH
 	return CreateDefaultLeverBoss(player, config)
 end
 
-paleWormLever:position({x = 33771, y = 31504, z = 14})
+paleWormLever:position({ x = 33771, y = 31504, z = 14 })
 paleWormLever:register()

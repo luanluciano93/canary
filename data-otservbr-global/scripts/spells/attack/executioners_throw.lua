@@ -9,6 +9,7 @@ function onGetFormulaValues(player, skill, attack, factor)
 	local levelTotal = player:getLevel() / 5
 	return -(((skillTotal * 0.17) + 17) + (levelTotal)) * 1.28, -(((skillTotal * 0.20) + 40) + (levelTotal)) * 1.28
 end
+
 combatBounce:setCallback(CALLBACK_PARAM_SKILLVALUE, "onGetFormulaValues")
 
 local combatCast = Combat()
@@ -75,6 +76,7 @@ function onTargetCreature(creature, target)
 
 	return true
 end
+
 combatCast:setCallback(CALLBACK_PARAM_TARGETCREATURE, "onTargetCreature")
 
 local spell = Spell("instant")
@@ -102,7 +104,7 @@ function spell.onCastSpell(creature, var)
 	var.instantName = "Executioner's Throw Cast"
 	if combatCast:execute(creature, var) then
 		local condition = Condition(CONDITION_SPELLCOOLDOWN, CONDITIONID_DEFAULT, 261)
-		condition:setTicks((cooldown * 1000)/configManager.getFloat(configKeys.RATE_SPELL_COOLDOWN))
+		condition:setTicks((cooldown * 1000) / configManager.getFloat(configKeys.RATE_SPELL_COOLDOWN))
 		creature:addCondition(condition)
 		return true
 	end

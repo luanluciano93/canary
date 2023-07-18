@@ -2,8 +2,8 @@ local timetochange = 60 --in seconds
 local time = os.time()
 
 local bodyToRemove = {
-	{itemId = 31413},
-	{itemId = 2886},
+	{ itemId = 31413 },
+	{ itemId = 2886 },
 }
 
 local healthMultiplier = configManager.getFloat(configKeys.RATE_BOSS_HEALTH)
@@ -22,7 +22,7 @@ local healthStages = {
 local urmahlulluChanges = CreatureEvent("UrmahlulluChanges")
 
 function urmahlulluChanges.onHealthChange(creature, attacker, primaryDamage, primaryType,
-                                          secondaryDamage, secondaryType)
+	secondaryDamage, secondaryType)
 	if creature and creature:getName() == 'Urmahlullu the Immaculate' then
 		if creature:getHealth() <= healthStages[2] then
 			position = creature:getPosition()
@@ -34,7 +34,7 @@ function urmahlulluChanges.onHealthChange(creature, attacker, primaryDamage, pri
 	end
 	if creature and creature:getName() == 'Wildness of Urmahlullu' then
 		if creature:getHealth() <= healthStages[3] then
-			if os.time() <= time + timetochange  then
+			if os.time() <= time + timetochange then
 				position = creature:getPosition()
 				creature:remove()
 				Game.createMonster('Urmahlullu the Tamed', position, true, true)

@@ -19,7 +19,7 @@ function createSummon.onSay(player, words, param)
 	end
 
 	if summon:getOutfit().lookType == 0 then
-		summon:setOutfit({lookType = player:getFamiliarLooktype()})
+		summon:setOutfit({ lookType = player:getFamiliarLooktype() })
 	end
 	return false
 end

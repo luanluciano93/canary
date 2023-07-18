@@ -44,13 +44,13 @@ function Concoction.find(identifier)
 end
 
 function Concoction.new(data)
-    local self = setmetatable({}, Concoction)
-		self.id = data.id
-		self.name = data.name or ItemType(data.id):getName()
-		self.timeLeftStorage = data.timeLeftStorage
-		self.lastActivatedAtStorage = data.lastActivatedAtStorage
-		self.config = data.config or {}
-    return self
+	local self = setmetatable({}, Concoction)
+	self.id = data.id
+	self.name = data.name or ItemType(data.id):getName()
+	self.timeLeftStorage = data.timeLeftStorage
+	self.lastActivatedAtStorage = data.lastActivatedAtStorage
+	self.config = data.config or {}
+	return self
 end
 
 function Concoction.initAll(player, sendMessage)

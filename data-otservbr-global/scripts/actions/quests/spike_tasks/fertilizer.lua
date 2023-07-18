@@ -4,7 +4,7 @@ end
 
 local spikeTasksFertilizer = Action()
 function spikeTasksFertilizer.onUse(player, item, fromPosition, target, toPosition, isHotkey)
-	if isInArray({-1, 4}, player:getStorageValue(SPIKE_MIDDLE_MUSHROOM_MAIN)) then
+	if isInArray({ -1, 4 }, player:getStorageValue(SPIKE_MIDDLE_MUSHROOM_MAIN)) then
 		return false
 	end
 

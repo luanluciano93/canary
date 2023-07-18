@@ -1,5 +1,5 @@
 local function calculateBonus(bonus)
-	local bonusCount = math.floor(bonus/100)
+	local bonusCount = math.floor(bonus / 100)
 	local remainder = bonus % 100
 	if remainder > 0 then
 		local probability = math.random(0, 100)
@@ -13,7 +13,7 @@ local function checkItemType(itemId)
 	local itemType = ItemType(itemId):getType()
 	-- Based on enum ItemTypes_t
 	if (itemType > 0 and itemType < 4) or itemType == 7 or itemType == 8 or
-		itemType == 11 or itemType == 13 or (itemType > 15 and itemType < 22) then
+			itemType == 11 or itemType == 13 or (itemType > 15 and itemType < 22) then
 		return true
 	end
 	return false
@@ -101,7 +101,7 @@ function bossDeath.onDeath(creature, corpse, killer, mostDamageKiller, lastHitUn
 				-- Bosstiary Loot Bonus
 				local bonus, boostedMessage
 				local isBoostedBoss = creature:getName():lower() == (Game.getBoostedBoss()):lower()
-				local bossRaceIds = {player:getSlotBossId(1), player:getSlotBossId(2)}
+				local bossRaceIds = { player:getSlotBossId(1), player:getSlotBossId(2) }
 				local isBoss = table.contains(bossRaceIds, monsterType:bossRaceId()) or isBoostedBoss
 				if isBoss and monsterType:bossRaceId() ~= 0 then
 					if monsterType:bossRaceId() == player:getSlotBossId(1) then

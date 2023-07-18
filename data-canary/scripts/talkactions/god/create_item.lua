@@ -31,7 +31,7 @@ function createItem.onSay(player, words, param)
 			count = math.min(10000, math.max(1, count))
 		elseif not itemType:isFluidContainer() then
 			local min = 100;
-			if(charges > 0) then
+			if (charges > 0) then
 				min = charges;
 			end
 			count = math.min(min, math.max(1, count))

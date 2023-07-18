@@ -34,7 +34,7 @@ function loadLuaMapAction(tablename)
 				if value.itemId ~= false and tile:getItemCountById(value.itemId) > 0 then
 					item = tile:getItemById(value.itemId)
 				end
-				
+
 				-- If he found the item, add the action id.
 				if item and value.itemId ~= false then
 					item:setAttribute(ITEM_ATTRIBUTE_ACTIONID, index)
@@ -63,12 +63,12 @@ function loadLuaMapUnique(tablename)
 			-- Checks that you have no items created
 			if not value.itemId == false and tile:getItemCountById(value.itemId) == 0 then
 				Spdlog.warn("[loadLuaMapUnique] - Wrong item id found")
-				Spdlog.warn("Unique id: ".. index ..", item id: ".. value.itemId .."")
+				Spdlog.warn("Unique id: " .. index .. ", item id: " .. value.itemId .. "")
 				break
 			end
 			if tile:getItemCountById(value.itemId) < 1 or value.itemId == false then
 				Spdlog.warn("[loadLuaMapUnique] - Wrong item id found")
-				Spdlog.warn("Unique id: ".. index ..", item id: wrong")
+				Spdlog.warn("Unique id: " .. index .. ", item id: wrong")
 				break
 			end
 			item = tile:getItemById(value.itemId)
@@ -90,7 +90,7 @@ function loadLuaMapSign(tablename)
 			-- Checks that you have no items created
 			if tile:getItemCountById(value.itemId) == 0 then
 				Spdlog.warn("[loadLuaMapSign] - Wrong item id found")
-				Spdlog.warn("Sign id: ".. index ..", item id: ".. value.itemId .."")
+				Spdlog.warn("Sign id: " .. index .. ", item id: " .. value.itemId .. "")
 				break
 			end
 			if tile:getItemCountById(value.itemId) == 1 then
@@ -106,7 +106,7 @@ end
 
 function loadLuaMapBookDocument(tablename)
 	-- Index 1: total valid, index 2: total loaded
-	local totals = {0, 0}
+	local totals = { 0, 0 }
 	for index, value in ipairs(tablename) do
 		local tile = Tile(value.position)
 		-- Check position (some items dont have a know position yet defined, lets ignore them)
@@ -136,23 +136,23 @@ function loadLuaMapBookDocument(tablename)
 						item:setAttribute(ITEM_ATTRIBUTE_TEXT, value.text)
 						totals[2] = totals[2] + 1
 					else
-						Spdlog.warn("[loadLuaMapBookDocument] - Item not found! Index: ".. index ..", itemId: ".. value.itemId.."")
+						Spdlog.warn("[loadLuaMapBookDocument] - Item not found! Index: " .. index .. ", itemId: " .. value.itemId .. "")
 						break
 					end
 				else
-					Spdlog.warn("[loadLuaMapBookDocument] - Container not found! Index: ".. index ..", containerId: ".. value.containerId.."")
+					Spdlog.warn("[loadLuaMapBookDocument] - Container not found! Index: " .. index .. ", containerId: " .. value.containerId .. "")
 					break
 				end
 			else
-				Spdlog.warn("[loadLuaMapBookDocument] - Tile not found! Index: ".. index ..", position: x: ".. value.position.x.." y: ".. value.position.y .." z: ".. value.position.z .."")
+				Spdlog.warn("[loadLuaMapBookDocument] - Tile not found! Index: " .. index .. ", position: x: " .. value.position.x .. " y: " .. value.position.y .. " z: " .. value.position.z .. "")
 				break
 			end
 		end
 	end
 	if totals[1] == totals[2] then
-		Spdlog.info("Loaded ".. totals[2] .." books and documents in the map")
+		Spdlog.info("Loaded " .. totals[2] .. " books and documents in the map")
 	else
-		Spdlog.info("Loaded ".. totals[2] .." of ".. totals[1] .." books and documents in the map")
+		Spdlog.info("Loaded " .. totals[2] .. " of " .. totals[1] .. " books and documents in the map")
 	end
 end
 

@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(32578, 32500, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT},
-		{pos = Position(32578, 32501, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT},
-		{pos = Position(32578, 32502, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT},
-		{pos = Position(32578, 32503, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT},
-		{pos = Position(32578, 32504, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT}
+		{ pos = Position(32578, 32500, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32578, 32501, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32578, 32502, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32578, 32503, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32578, 32504, 12), teleport = Position(32619, 32498, 12), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(32601, 32486, 12),
@@ -26,5 +26,5 @@ function megasylvanYseldaLever.onUse(player, item, fromPosition, target, toPosit
 	return CreateDefaultLeverBoss(player, config)
 end
 
-megasylvanYseldaLever:position({x = 32578, y = 32499, z = 12})
+megasylvanYseldaLever:position({ x = 32578, y = 32499, z = 12 })
 megasylvanYseldaLever:register()

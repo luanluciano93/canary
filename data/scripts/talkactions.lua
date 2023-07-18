@@ -53,19 +53,19 @@ local function sendValidKeys(player)
 		table.insert(flagsList, flagName)
 	end
 
-	local text = "Invalid flag. Valid flags are: ".. table.concat(flagsList, "\n")
+	local text = "Invalid flag. Valid flags are: " .. table.concat(flagsList, "\n")
 	player:showTextDialog(2019, text)
 end
 
 local function hasValidParams(player, param, usage)
 	if not param or param == "" then
-		player:sendCancelMessage("Command param required. Usage: ".. usage)
+		player:sendCancelMessage("Command param required. Usage: " .. usage)
 		return false
 	end
 
 	local split = param:split(",")
 	if not split[2] then
-		player:sendCancelMessage("Insufficient parameters. Usage: ".. usage)
+		player:sendCancelMessage("Insufficient parameters. Usage: " .. usage)
 		return false
 	end
 
@@ -151,13 +151,13 @@ function Player.talkactionSetFlag(self, param, flagType)
 	end
 
 	if targetPlayer:hasFlag(flagValue) then
-		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,"Player " .. playerName .. " already has flag " .. GetFlagNameByType(flagValue) .. ".")
+		self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Player " .. playerName .. " already has flag " .. GetFlagNameByType(flagValue) .. ".")
 		return false
 	end
 
 	targetPlayer:setGroupFlag(flagValue)
-	self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Flag " .. GetFlagNameByType(flagValue)  .. " set for player " .. playerName .. ".")
-	Spdlog.info("[Player.talkactionSetFlag] Added flag " .. GetFlagNameByType(flagValue) .. " to ".. targetPlayer:getName().. " character by " .. self:getName() .. ".")
+	self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Flag " .. GetFlagNameByType(flagValue) .. " set for player " .. playerName .. ".")
+	Spdlog.info("[Player.talkactionSetFlag] Added flag " .. GetFlagNameByType(flagValue) .. " to " .. targetPlayer:getName() .. " character by " .. self:getName() .. ".")
 	return true
 end
 
@@ -192,7 +192,7 @@ function Player.talkactionRemoveFlag(self, param, flagType)
 
 	targetPlayer:removeGroupFlag(flagValue)
 	self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Flag " .. GetFlagNameByType(flagValue) .. " removed from player " .. playerName .. ".")
-	Spdlog.info("[Player.talkactionRemoveFlag] Removed flag " .. GetFlagNameByType(flagValue) .. " from ".. targetPlayer:getName().. " character by " .. self:getName() .. ".")
+	Spdlog.info("[Player.talkactionRemoveFlag] Removed flag " .. GetFlagNameByType(flagValue) .. " from " .. targetPlayer:getName() .. " character by " .. self:getName() .. ".")
 	return true
 end
 
@@ -252,12 +252,12 @@ function Player.reloadTalkaction(self, words, param)
 	end
 
 	if not configManager.getBoolean(configKeys.ALLOW_RELOAD) then
-		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,"Reload command is disabled.")
+		self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Reload command is disabled.")
 		return true
 	end
 
 	if param == "" then
-		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,"Command param required.")
+		self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Command param required.")
 		return false
 	end
 
@@ -270,8 +270,8 @@ function Player.reloadTalkaction(self, words, param)
 		Spdlog.info("Reloaded " .. param:lower() .. "")
 		return true
 	elseif not reloadType then
-		self:sendTextMessage(MESSAGE_EVENT_ADVANCE,"Reload type not found.")
-		Spdlog.warn("[reload.onSay] - Reload type '".. param.. "' not found")
+		self:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Reload type not found.")
+		Spdlog.warn("[reload.onSay] - Reload type '" .. param .. "' not found")
 		return false
 	end
 	return false

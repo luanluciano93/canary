@@ -26,8 +26,8 @@ function storageGet.onSay(cid, words, param)
 	split[2] = split[2]:gsub("^%s*(.-)$", "%1")
 
 	local ch = split[2]
-	sto=getPlayerStorageValue(getPlayerByName(split[1]), tonumber(ch))
-	doPlayerSendTextMessage(cid, MESSAGE_EVENT_ADVANCE, "The storage with id: "..tonumber(ch).." from player "..split[1].." is: "..sto..".")
+	sto = getPlayerStorageValue(getPlayerByName(split[1]), tonumber(ch))
+	doPlayerSendTextMessage(cid, MESSAGE_EVENT_ADVANCE, "The storage with id: " .. tonumber(ch) .. " from player " .. split[1] .. " is: " .. sto .. ".")
 	return false
 end
 

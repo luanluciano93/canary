@@ -14,7 +14,7 @@ local config = {
 		{ cosmic = 'cosmic energy prism a invu', pos = Position(32801, 32827, 14) },
 		{ cosmic = 'cosmic energy prism b invu', pos = Position(32798, 32827, 14) },
 		{ cosmic = 'cosmic energy prism c invu', pos = Position(32803, 32826, 14) },
-		{ cosmic = 'cosmic energy prism d invu', pos = Position(32796, 32826, 14)}
+		{ cosmic = 'cosmic energy prism d invu', pos = Position(32796, 32826, 14) }
 	},
 	specPos = {
 		from = Position(32785, 32813, 14),

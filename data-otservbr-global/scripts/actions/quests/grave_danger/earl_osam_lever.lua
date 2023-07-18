@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(33516, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33517, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33518, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33519, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33520, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33516, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33517, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33518, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33519, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33520, 31444, 13), teleport = Position(33488, 31430, 13), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33479, 31429, 13),
@@ -26,5 +26,5 @@ function earlOsamLever.onUse(player, item, fromPosition, target, toPosition, isH
 	return CreateDefaultLeverBoss(player, config)
 end
 
-earlOsamLever:position({x = 33515, y = 31444, z = 13})
+earlOsamLever:position({ x = 33515, y = 31444, z = 13 })
 earlOsamLever:register()

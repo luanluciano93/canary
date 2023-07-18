@@ -1,10 +1,10 @@
 local setting = {
-	centerRoom = {x = 33364, y = 31318, z = 9},
+	centerRoom = { x = 33364, y = 31318, z = 9 },
 	storage = Storage.TheSecretLibrary.TheOrderOfTheFalcon.OberonTimer,
-	Pillar1pos = {x = 33361, y = 31316, z = 9},
-	bossPosition = {x = 33364, y = 31317, z = 9},
-	kickPosition = {x = 33300, y = 31289, z = 9},
-	playerTeleport = {x = 33364, y = 31322, z = 9}
+	Pillar1pos = { x = 33361, y = 31316, z = 9 },
+	bossPosition = { x = 33364, y = 31317, z = 9 },
+	kickPosition = { x = 33300, y = 31289, z = 9 },
+	playerTeleport = { x = 33364, y = 31322, z = 9 }
 }
 
 local oberonLever = Action()
@@ -25,20 +25,20 @@ function oberonLever.onUse(creature, item, fromPosition, target, toPosition, isH
 			end
 		end
 		Game.createMonster("Grand Master Oberon", setting.bossPosition, false, true)
-		Game.createMonster("Oberon's Bile", Position({x = setting.Pillar1pos.x, y = setting.Pillar1pos.y, z = setting.Pillar1pos.z}), false, true)
-		Game.createMonster("Oberon's Hate", Position({x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y, z = setting.Pillar1pos.z}), false, true)
-		Game.createMonster("Oberon's Spite", Position({x = setting.Pillar1pos.x, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z}), false, true)
-		Game.createMonster("Oberon's Ire", Position({x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z}), false, true)
+		Game.createMonster("Oberon's Bile", Position({ x = setting.Pillar1pos.x, y = setting.Pillar1pos.y, z = setting.Pillar1pos.z }), false, true)
+		Game.createMonster("Oberon's Hate", Position({ x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y, z = setting.Pillar1pos.z }), false, true)
+		Game.createMonster("Oberon's Spite", Position({ x = setting.Pillar1pos.x, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z }), false, true)
+		Game.createMonster("Oberon's Ire", Position({ x = setting.Pillar1pos.x + 6, y = setting.Pillar1pos.y + 4, z = setting.Pillar1pos.z }), false, true)
 		local players = {}
 		for i = 0, 4 do
-			local player1 = Tile({x = (Position(item:getPosition()).x - 2) + i, y = Position(item:getPosition()).y + 1, z = Position(item:getPosition()).z}):getTopCreature()
+			local player1 = Tile({ x = (Position(item:getPosition()).x - 2) + i, y = Position(item:getPosition()).y + 1, z = Position(item:getPosition()).z }):getTopCreature()
 			players[#players+1] = player1
 		end
 		for i, player in ipairs(players) do
 			player:getPosition():sendMagicEffect(CONST_ME_POFF)
 			player:teleportTo(Position(setting.playerTeleport), false)
 			doSendMagicEffect(player:getPosition(), CONST_ME_TELEPORT)
-			setPlayerStorageValue(player,setting.storage, os.time() + 20 * 60 * 60)
+			setPlayerStorageValue(player, setting.storage, os.time() + 20 * 60 * 60)
 			player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You have 20 minute(s) to defeat the boss.')
 			addEvent(function(cid)
 				local playerToRemove = Player(cid)

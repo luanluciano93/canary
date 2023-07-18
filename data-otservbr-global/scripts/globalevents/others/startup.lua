@@ -175,4 +175,5 @@ function serverstartup.onStartup()
 		Hazard.createAreas()
 	end
 end
+
 serverstartup:register()

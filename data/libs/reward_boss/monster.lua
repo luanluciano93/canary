@@ -68,7 +68,7 @@ function MonsterType.createLootItem(self, lootBlock, chance, lootTable)
 			itemCount = itemCount - n
 		end
 
-		table.insert(lootTable, {lootBlock.itemId, n})
+		table.insert(lootTable, { lootBlock.itemId, n })
 	end
 
 	return lootTable

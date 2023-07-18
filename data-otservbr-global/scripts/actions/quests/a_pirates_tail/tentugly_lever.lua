@@ -4,11 +4,11 @@ local config = {
 	timeToFightAgain = 20, -- In hour
 	timeToDefeatBoss = 20, -- In minutes
 	playerPositions = {
-		{pos = Position(33792, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33793, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33794, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33795, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33796, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33792, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33793, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33794, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33795, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33796, 31391, 6), teleport = Position(33722, 31186, 7), effect = CONST_ME_TELEPORT }
 	},
 	bossPosition = Position(33722, 31182, 7),
 	specPos = {
@@ -49,7 +49,7 @@ function tentuglyLever.onUse(player, item, fromPosition, target, toPosition, isH
 			for _, v in pairs(info) do
 				local newPlayer = v.creature
 				if newPlayer then
-					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face ".. config.bossName .. " again!")
+					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face " .. config.bossName .. " again!")
 					if newPlayer:getStorageValue(config.storage) > os.time() then
 						newPlayer:getPosition():sendMagicEffect(CONST_ME_POFF)
 					end
@@ -90,5 +90,5 @@ function tentuglyLever.onUse(player, item, fromPosition, target, toPosition, isH
 	end
 end
 
-tentuglyLever:position({x = 33791, y = 31391, z = 6})
+tentuglyLever:position({ x = 33791, y = 31391, z = 6 })
 tentuglyLever:register()

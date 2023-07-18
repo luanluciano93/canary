@@ -22,9 +22,9 @@ function dustFunctions.onSay(player, words, param)
 	-- Check if player is online
 	local targetPlayer = Player(name)
 	if not targetPlayer then
-		player:sendCancelMessage("Player ".. string.titleCase(name) .." is not online.")
+		player:sendCancelMessage("Player " .. string.titleCase(name) .. " is not online.")
 		-- Distro log
-		Spdlog.error("[dustFunctions.onSay] - Player ".. string.titleCase(name) .." is not online.")
+		Spdlog.error("[dustFunctions.onSay] - Player " .. string.titleCase(name) .. " is not online.")
 		return false
 	end
 
@@ -41,12 +41,12 @@ function dustFunctions.onSay(player, words, param)
 	end
 
 	targetPlayer:addForgeDusts(dustAmount)
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful added ".. dustAmount .." \z
-                           dusts for the ".. targetPlayer:getName() .." player.")
-	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. player:getName() .." added \z
-	                             ".. dustAmount .." dusts to your character.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful added " .. dustAmount .. " \z
+                           dusts for the " .. targetPlayer:getName() .. " player.")
+	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "" .. player:getName() .. " added \z
+	                             " .. dustAmount .. " dusts to your character.")
 	-- Distro log
-	Spdlog.info("".. player:getName() .." added ".. dustAmount .." dusts to ".. targetPlayer:getName() .." player.")
+	Spdlog.info("" .. player:getName() .. " added " .. dustAmount .. " dusts to " .. targetPlayer:getName() .. " player.")
 	return true
 end
 
@@ -77,9 +77,9 @@ function removeDusts.onSay(player, words, param)
 	-- Check if player is online
 	local targetPlayer = Player(name)
 	if not targetPlayer then
-		player:sendCancelMessage("Player ".. string.titleCase(name) .." is not online.")
+		player:sendCancelMessage("Player " .. string.titleCase(name) .. " is not online.")
 		-- Distro log
-		Spdlog.error("[removeDusts.onSay] - Player ".. string.titleCase(name) .." is not online.")
+		Spdlog.error("[removeDusts.onSay] - Player " .. string.titleCase(name) .. " is not online.")
 		return false
 	end
 
@@ -96,12 +96,12 @@ function removeDusts.onSay(player, words, param)
 	end
 
 	targetPlayer:removeForgeDusts(dustAmount)
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful removed ".. dustAmount .." \z
-                           dusts for the ".. targetPlayer:getName() .." player.")
-	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. player:getName() .." removed \z
-	                             ".. dustAmount .." dusts to your character.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful removed " .. dustAmount .. " \z
+                           dusts for the " .. targetPlayer:getName() .. " player.")
+	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "" .. player:getName() .. " removed \z
+	                             " .. dustAmount .. " dusts to your character.")
 	-- Distro log
-	Spdlog.info("".. player:getName() .." removed ".. dustAmount .." dusts to ".. targetPlayer:getName() .." player.")
+	Spdlog.info("" .. player:getName() .. " removed " .. dustAmount .. " dusts to " .. targetPlayer:getName() .. " player.")
 	return true
 end
 
@@ -128,17 +128,17 @@ function getDusts.onSay(player, words, param)
 	local name = split[1]
 	local targetPlayer = Player(name)
 	if not targetPlayer then
-		player:sendCancelMessage("Player ".. string.titleCase(name) .." is not online.")
+		player:sendCancelMessage("Player " .. string.titleCase(name) .. " is not online.")
 		-- Distro log
-		Spdlog.error("[getDusts.onSay] - Player ".. string.titleCase(name) .." is not online.")
+		Spdlog.error("[getDusts.onSay] - Player " .. string.titleCase(name) .. " is not online.")
 		return false
 	end
 
 	local dustAmount
 	dustAmount = targetPlayer:getForgeDusts()
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. targetPlayer:getName() .." has ".. dustAmount .." dusts.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "" .. targetPlayer:getName() .. " has " .. dustAmount .. " dusts.")
 	-- Distro log
-	Spdlog.info("".. targetPlayer:getName() .." has ".. dustAmount .." dusts.")
+	Spdlog.info("" .. targetPlayer:getName() .. " has " .. dustAmount .. " dusts.")
 	return true
 end
 
@@ -169,9 +169,9 @@ function setDusts.onSay(player, words, param)
 	-- Check if player is online
 	local targetPlayer = Player(name)
 	if not targetPlayer then
-		player:sendCancelMessage("Player ".. string.titleCase(name) .." is not online.")
+		player:sendCancelMessage("Player " .. string.titleCase(name) .. " is not online.")
 		-- Distro log
-		Spdlog.error("[setDusts.onSay] - Player ".. string.titleCase(name) .." is not online.")
+		Spdlog.error("[setDusts.onSay] - Player " .. string.titleCase(name) .. " is not online.")
 		return false
 	end
 
@@ -187,12 +187,12 @@ function setDusts.onSay(player, words, param)
 	end
 
 	targetPlayer:setForgeDusts(dustAmount)
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful set ".. dustAmount .." \z
-							dusts for the ".. targetPlayer:getName() .." player.")
-	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. player:getName() .." set \z
-	                             ".. dustAmount .." dusts to your character.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successful set " .. dustAmount .. " \z
+							dusts for the " .. targetPlayer:getName() .. " player.")
+	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "" .. player:getName() .. " set \z
+	                             " .. dustAmount .. " dusts to your character.")
 	-- Distro log
-	Spdlog.info("".. player:getName() .." set ".. dustAmount .." dusts to ".. targetPlayer:getName() .." player.")
+	Spdlog.info("" .. player:getName() .. " set " .. dustAmount .. " dusts to " .. targetPlayer:getName() .. " player.")
 	return true
 end
 

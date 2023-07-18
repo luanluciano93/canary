@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(33774, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33775, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33776, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33777, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33778, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33774, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33775, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33776, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33777, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33778, 31634, 14), teleport = Position(33742, 31639, 14), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33734, 31624, 14),
@@ -26,5 +26,5 @@ function goshnarsSpiteLever.onUse(player, item, fromPosition, target, toPosition
 	return CreateDefaultLeverBoss(player, config)
 end
 
-goshnarsSpiteLever:position({x = 33773, y = 31634, z = 14})
+goshnarsSpiteLever:position({ x = 33773, y = 31634, z = 14 })
 goshnarsSpiteLever:register()

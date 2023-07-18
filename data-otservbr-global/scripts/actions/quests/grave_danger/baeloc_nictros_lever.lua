@@ -5,11 +5,11 @@ local config = {
 	timeToFightAgain = 20, -- In hour
 	timeToDefeatBoss = 20, -- In minutes
 	playerPositions = {
-		{pos = Position(33424, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33425, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33426, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33427, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT},
-		{pos = Position(33428, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33424, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33425, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33426, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33427, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33428, 31413, 13), teleport = Position(33423, 31448, 13), effect = CONST_ME_TELEPORT }
 	},
 	boss1Position = Position(33427, 31428, 13),
 	boss2Position = Position(33422, 31428, 13),
@@ -50,7 +50,7 @@ function baelocNictrosLever.onUse(player, item, fromPosition, target, toPosition
 			for _, v in pairs(info) do
 				local newPlayer = v.creature
 				if newPlayer then
-					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face ".. config.bossName .. " again!")
+					newPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "You or a member in your team have to wait " .. config.timeToFightAgain .. " hours to face " .. config.bossName .. " again!")
 					if newPlayer:getStorageValue(config.storage) > os.time() then
 						newPlayer:getPosition():sendMagicEffect(CONST_ME_POFF)
 					end
@@ -73,7 +73,7 @@ function baelocNictrosLever.onUse(player, item, fromPosition, target, toPosition
 		local boss = Tile(config.boss1Position):getTopCreature()
 		addEvent(function()
 			boss:teleportTo(Position(33427, 31436, 13))
-		end, 5*1000)
+		end, 5 * 1000)
 		addEvent(function()
 			local old_players = lever:getInfoPositions()
 			spec:clearCreaturesCache()
@@ -96,5 +96,5 @@ function baelocNictrosLever.onUse(player, item, fromPosition, target, toPosition
 	end
 end
 
-baelocNictrosLever:position({x = 33423, y = 31413, z = 13})
+baelocNictrosLever:position({ x = 33423, y = 31413, z = 13 })
 baelocNictrosLever:register()

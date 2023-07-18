@@ -1,5 +1,5 @@
 local function calculateBonus(bonus)
-	local bonusCount = math.floor(bonus/100)
+	local bonusCount = math.floor(bonus / 100)
 	local remainder = bonus % 100
 	if remainder > 0 then
 		local probability = math.random(0, 100)
@@ -13,7 +13,7 @@ local function checkItemType(itemId)
 	local itemType = ItemType(itemId):getType()
 	-- Based on enum ItemTypes_t
 	if (itemType > 0 and itemType < 4) or itemType == 7 or itemType == 8 or
-		itemType == 11 or itemType == 13 or (itemType > 15 and itemType < 22) then
+			itemType == 11 or itemType == 13 or (itemType > 15 and itemType < 22) then
 		return true
 	end
 	return false
@@ -47,7 +47,7 @@ function Monster:onDropLoot(corpse)
 		local modifier = 1
 
 		if player then
-			participants = {player}
+			participants = { player }
 			if configManager.getBoolean(PARTY_SHARE_LOOT_BOOSTS) then
 				local party = player:getParty()
 				if party and party:isSharedExperienceEnabled() then
@@ -119,7 +119,7 @@ function Monster:onDropLoot(corpse)
 
 			local boostedMessage
 			local isBoostedBoss = self:getName():lower() == (Game.getBoostedBoss()):lower()
-			local bossRaceIds = {player:getSlotBossId(1), player:getSlotBossId(2)}
+			local bossRaceIds = { player:getSlotBossId(1), player:getSlotBossId(2) }
 			local isBoss = table.contains(bossRaceIds, mType:bossRaceId()) or isBoostedBoss
 			if isBoss and mType:bossRaceId() ~= 0 then
 				local bonus
@@ -196,8 +196,8 @@ function Monster:onSpawn(position)
 	-- We won't run anything from here on down if we're opening the global pack
 	if IsRunningGlobalDatapack() then
 		if self:getName():lower() == "cobra scout" or
-			self:getName():lower() == "cobra vizier" or
-			self:getName():lower() == "cobra assassin" then
+				self:getName():lower() == "cobra vizier" or
+				self:getName():lower() == "cobra assassin" then
 			if getGlobalStorageValue(GlobalStorage.CobraBastionFlask) >= os.time() then
 				self:setHealth(self:getMaxHealth() * 0.75)
 			end
@@ -219,7 +219,7 @@ function Monster:onSpawn(position)
 			if self:getName():lower() == 'iron servant replica' then
 				local chance = math.random(100)
 				if Game.getStorageValue(GlobalStorage.ForgottenKnowledge.MechanismDiamond) >= 1
-				and Game.getStorageValue(GlobalStorage.ForgottenKnowledge.MechanismGolden) >= 1 then
+						and Game.getStorageValue(GlobalStorage.ForgottenKnowledge.MechanismGolden) >= 1 then
 					if chance > 30 then
 						local chance2 = math.random(2)
 						if chance2 == 1 then

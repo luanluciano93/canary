@@ -28,7 +28,7 @@ Blessings.Config = {
 	Debug = false -- Prin debug messages in console if enabled
 }
 
-dofile(CORE_DIRECTORY.. "/modules/scripts/blessings/assets.lua")
+dofile(CORE_DIRECTORY .. "/modules/scripts/blessings/assets.lua")
 
 --[=====[
 --
@@ -51,7 +51,7 @@ Blessings.DebugPrint = function(content, pre, pos)
 	if pre == nil then
 		pre = ""
 	else
-		pre = pre.. " "
+		pre = pre .. " "
 	end
 	if pos == nil then
 		pos = ""
@@ -72,7 +72,7 @@ Blessings.C_Packet = {
 	OpenWindow = 0xCF
 }
 
-Blessings.S_Packet  = {
+Blessings.S_Packet = {
 	BlessDialog = 0x9B,
 	BlessStatus = 0x9C
 }
@@ -243,7 +243,7 @@ Blessings.doAdventurerBlessing = function(player)
 	end
 	player:addMissingBless(true, true)
 
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE,'You received adventurers blessings for you being level lower than ' .. Blessings.Config.AdventurerBlessingLevel .. '!')
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, 'You received adventurers blessings for you being level lower than ' .. Blessings.Config.AdventurerBlessingLevel .. '!')
 	player:getPosition():sendMagicEffect(CONST_ME_HOLYDAMAGE)
 	return true
 end
@@ -266,13 +266,13 @@ Blessings.DropLoot = function(player, corpse, chance, skulled)
 		local item = player:getSlotItem(i)
 		if item then
 			local thisChance = chance
-			local thisRandom = math.random(100*multiplier)
+			local thisRandom = math.random(100 * multiplier)
 			if not item:isContainer() then
-				thisChance = chance/10
+				thisChance = chance / 10
 			end
-			Blessings.DebugPrint(thisChance/multiplier .. "%" .. " | thisRandom "..thisRandom/multiplier.."%", "DropLoot item "..item:getName() .. " |")
+			Blessings.DebugPrint(thisChance / multiplier .. "%" .. " | thisRandom " .. thisRandom / multiplier .. "%", "DropLoot item " .. item:getName() .. " |")
 			if skulled or thisRandom <= thisChance then
-				Blessings.DebugPrint("Dropped "..item:getName())
+				Blessings.DebugPrint("Dropped " .. item:getName())
 				item:moveTo(corpse)
 			end
 		end
@@ -284,7 +284,7 @@ Blessings.DropLoot = function(player, corpse, chance, skulled)
 			for i = 0, inbox:getSize() do
 				local item = inbox:getItem(i)
 				if item then
-					toBeDeleted[#toBeDeleted + 1] = item.uid
+					toBeDeleted[#toBeDeleted+1] = item.uid
 				end
 			end
 			if #toBeDeleted > 0 then
@@ -302,20 +302,19 @@ end
 Blessings.ClearBless = function(player, killer, currentBless)
 	Blessings.DebugPrint(#currentBless, "ClearBless #currentBless")
 	local hasToF = Blessings.Config.HasToF and player:hasBlessing(1) or false
-	if hasToF and killer (killer:isPlayer() or (killer:getMaster() and killer:getMaster():isPlayer())) then -- TODO add better check if its pvp or pve
+	if hasToF and killer(killer:isPlayer() or (killer:getMaster() and killer:getMaster():isPlayer())) then -- TODO add better check if its pvp or pve
 		player:removeBlessing(1)
 		return
 	end
 	for i = 1, #currentBless do
-
-		Blessings.DebugPrint(i, "ClearBless curBless i", " | "..currentBless[i].name)
+		Blessings.DebugPrint(i, "ClearBless curBless i", " | " .. currentBless[i].name)
 		player:removeBlessing(currentBless[i].id, 1)
 	end
 end
 
 
 Blessings.BuyAllBlesses = function(player)
-	if not Tile(player:getPosition()):hasFlag(TILESTATE_PROTECTIONZONE) and (player:isPzLocked() or player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT))  then
+	if not Tile(player:getPosition()):hasFlag(TILESTATE_PROTECTIONZONE) and (player:isPzLocked() or player:getCondition(CONDITION_INFIGHT, CONDITIONID_DEFAULT)) then
 		player:sendCancelMessage("You can't buy bless while in battle.")
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 		return
@@ -325,7 +324,7 @@ Blessings.BuyAllBlesses = function(player)
 	local PvPBlessCost = Blessings.getPvpBlessingCost(player:getLevel())
 	local hasToF = Blessings.Config.HasToF and player:hasBlessing(1) or true
 	donthavefilter = function(p, b) return not p:hasBlessing(b) end
-	local missingBless = player:getBlessings(nil,donthavefilter)
+	local missingBless = player:getBlessings(nil, donthavefilter)
 	local missingBlessAmt = #missingBless + (hasToF and 0 or 1)
 	local totalCost = blessCost * #missingBless
 
@@ -342,22 +341,21 @@ Blessings.BuyAllBlesses = function(player)
 		for i, v in ipairs(missingBless) do
 			player:addBlessing(v.id, 1)
 		end
-		player:sendCancelMessage("You received the remaining " .. missingBlessAmt .. " blesses for a total of " .. totalCost .." gold.")
+		player:sendCancelMessage("You received the remaining " .. missingBlessAmt .. " blesses for a total of " .. totalCost .. " gold.")
 		player:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
 	else
 		player:sendCancelMessage("You don't have enough money. You need " .. totalCost .. " to buy all blesses.", cid)
 		player:getPosition():sendMagicEffect(CONST_ME_POFF)
 	end
-
 end
 
 Blessings.PlayerDeath = function(player, corpse, killer)
 	local hasToF = Blessings.Config.HasToF and player:hasBlessing(1) or false
 	local hasAol = (player:getSlotItem(CONST_SLOT_NECKLACE) and player:getSlotItem(CONST_SLOT_NECKLACE):getId() == ITEM_AMULETOFLOSS)
-	local haveSkull = table.contains({SKULL_RED, SKULL_BLACK}, player:getSkull())
+	local haveSkull = table.contains({ SKULL_RED, SKULL_BLACK }, player:getSkull())
 	local curBless = player:getBlessings()
 
-	if haveSkull then  -- lose all bless + drop all items
+	if haveSkull then -- lose all bless + drop all items
 		Blessings.DropLoot(player, corpse, 100, true)
 	elseif #curBless < 5 and not hasAol then -- lose all items
 		local equipLoss = Blessings.LossPercent[#curBless].item

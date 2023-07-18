@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(32747, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32748, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32749, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32750, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT},
-		{pos = Position(32751, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT}
+		{ pos = Position(32747, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32748, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32749, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32750, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT },
+		{ pos = Position(32751, 32773, 10), teleport = Position(32756, 32729, 10), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(32748, 32713, 10),
@@ -26,5 +26,5 @@ function ghuloshLever.onUse(player, item, fromPosition, target, toPosition, isHo
 	return CreateDefaultLeverBoss(player, config)
 end
 
-ghuloshLever:position({x = 32746, y = 32773, z = 10})
+ghuloshLever:position({ x = 32746, y = 32773, z = 10 })
 ghuloshLever:register()

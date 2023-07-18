@@ -24,9 +24,9 @@ function addMoney.onSay(player, words, param)
 	-- Check if player is online
 	local targetPlayer = Player(name)
 	if not targetPlayer then
-		player:sendCancelMessage("Player ".. string.titleCase(name) .." is not online.")
+		player:sendCancelMessage("Player " .. string.titleCase(name) .. " is not online.")
 		-- Distro log
-		Spdlog.error("[addMoney.onSay] - Player ".. string.titleCase(name) .." is not online")
+		Spdlog.error("[addMoney.onSay] - Player " .. string.titleCase(name) .. " is not online")
 		return false
 	end
 
@@ -37,12 +37,12 @@ function addMoney.onSay(player, words, param)
 	end
 
 	targetPlayer:setBankBalance(targetPlayer:getBankBalance() + money)
-	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successfull added ".. money .." \z
-                           gold coins for the ".. targetPlayer:getName() .." player.")
-	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "".. player:getName() .." added \z
-	                             ".. money .." gold coins to your character.")
+	player:sendTextMessage(MESSAGE_EVENT_ADVANCE, "Successfull added " .. money .. " \z
+                           gold coins for the " .. targetPlayer:getName() .. " player.")
+	targetPlayer:sendTextMessage(MESSAGE_EVENT_ADVANCE, "" .. player:getName() .. " added \z
+	                             " .. money .. " gold coins to your character.")
 	-- Distro log
-	Spdlog.info("".. player:getName() .." added ".. money .." gold coins to ".. targetPlayer:getName() .." player")
+	Spdlog.info("" .. player:getName() .. " added " .. money .. " gold coins to " .. targetPlayer:getName() .. " player")
 	return true
 end
 

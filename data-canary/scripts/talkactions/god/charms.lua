@@ -6,12 +6,12 @@ function addCharm.onSay(player, words, param)
 	end
 	local usage = "/addcharms PLAYER NAME,AMOUNT"
 	if param == "" then
-		player:sendCancelMessage("Command param required. Usage: ".. usage)
+		player:sendCancelMessage("Command param required. Usage: " .. usage)
 		return false
 	end
 	local split = param:split(",")
 	if not split[2] then
-		player:sendCancelMessage("Insufficient parameters. Usage: ".. usage)
+		player:sendCancelMessage("Insufficient parameters. Usage: " .. usage)
 		return false
 	end
 	local target = Player(split[1])
@@ -26,8 +26,8 @@ function addCharm.onSay(player, words, param)
 	target:sendCancelMessage("Received " .. split[2] .. " charm points!")
 	target:addCharmPoints(tonumber(split[2]))
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
+
 addCharm:separator(" ")
 addCharm:register()
 
@@ -57,7 +57,6 @@ function resetCharm.onSay(player, words, param)
 	end
 	target:setCharmUnlockedRuneBit(0)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 resetCharm:separator(" ")
@@ -83,7 +82,6 @@ function charmExpansion.onSay(player, words, param)
 	target:sendCancelMessage("Received charm expansion!")
 	target:setCharmRuneSlotExpansion(true)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 charmExpansion:separator(" ")
@@ -113,7 +111,6 @@ function charmRune.onSay(player, words, param)
 	end
 	target:setCharmUnlockedRuneBit(playerCurBit)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
-
 end
 
 charmRune:separator(" ")
@@ -128,12 +125,12 @@ function setBestiary.onSay(player, words, param)
 
 	local usage = "/setbestiary PLAYER NAME,MONSTER NAME,AMOUNT"
 	if param == "" then
-		player:sendCancelMessage("Command param required. Usage: ".. usage)
+		player:sendCancelMessage("Command param required. Usage: " .. usage)
 		return false
 	end
 	local split = param:split(",")
 	if not split[3] then
-		player:sendCancelMessage("Insufficient parameters. Usage: ".. usage)
+		player:sendCancelMessage("Insufficient parameters. Usage: " .. usage)
 		return false
 	end
 	local target = Player(split[1])
@@ -152,12 +149,11 @@ function setBestiary.onSay(player, words, param)
 	end
 	local amount = tonumber(split[3])
 
-	player:sendCancelMessage("Set bestiary kill of monster '".. split[2] .. "' from player '" .. target:getName() .. "' to '" .. amount .. "'.")
-	target:sendCancelMessage("Updated kills of monster '".. split[2] .. "'!")
+	player:sendCancelMessage("Set bestiary kill of monster '" .. split[2] .. "' from player '" .. target:getName() .. "' to '" .. amount .. "'.")
+	target:sendCancelMessage("Updated kills of monster '" .. split[2] .. "'!")
 	local playerCurBit = target:setBestiaryKillCount(monsterID, amount)
 	target:getPosition():sendMagicEffect(CONST_ME_HOLYAREA)
 end
-
 
 setBestiary:separator(" ")
 setBestiary:register()

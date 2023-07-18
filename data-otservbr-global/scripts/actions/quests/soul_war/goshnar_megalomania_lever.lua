@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(33676, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33677, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33678, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33679, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT},
-		{pos = Position(33680, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33676, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33677, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33678, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33679, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33680, 31634, 14), teleport = Position(33710, 31639, 14), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33701, 31626, 14),
@@ -26,5 +26,5 @@ function goshnarsMegalomaniaLever.onUse(player, item, fromPosition, target, toPo
 	return CreateDefaultLeverBoss(player, config)
 end
 
-goshnarsMegalomaniaLever:position({x = 33675, y = 31634, z = 14})
+goshnarsMegalomaniaLever:position({ x = 33675, y = 31634, z = 14 })
 goshnarsMegalomaniaLever:register()

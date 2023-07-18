@@ -15,7 +15,7 @@ local config = {
 		{ name = 'soulcatcher', pos = Position(33363, 31187, 10) },
 		{ name = 'soulcatcher', pos = Position(33353, 31176, 10) },
 		{ name = 'soulcatcher', pos = Position(33363, 31176, 10) },
-		{ name = 'soul of dragonking zyrtarch', pos = Position(33359, 31182, 12)}
+		{ name = 'soul of dragonking zyrtarch', pos = Position(33359, 31182, 12) }
 	},
 	specPos = {
 		from = Position(33348, 31172, 10),

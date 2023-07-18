@@ -11,7 +11,7 @@ function areasound.onSay(player, words, param)
 	end
 
 	local split = param:split(",")
-	if not(split[2]) then
+	if not (split[2]) then
 		local primaryEffect = tonumber(param)
 		if (primaryEffect == nil or primaryEffect == 0) then
 			player:sendCancelMessage("Invalid command param.")
@@ -51,7 +51,7 @@ function internalsound.onSay(player, words, param)
 	end
 
 	local split = param:split(",")
-	if not(split[2]) then
+	if not (split[2]) then
 		local primaryEffect = tonumber(param)
 		if (primaryEffect == nil or primaryEffect == 0) then
 			player:sendCancelMessage("Invalid command param.")
@@ -91,7 +91,7 @@ function globalsound.onSay(player, words, param)
 	end
 
 	local split = param:split(",")
-	if not(split[2]) then
+	if not (split[2]) then
 		local primaryEffect = tonumber(param)
 		if (primaryEffect == nil or primaryEffect == 0) then
 			player:sendCancelMessage("Invalid command param.")

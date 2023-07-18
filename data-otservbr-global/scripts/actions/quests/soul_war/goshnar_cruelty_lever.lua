@@ -7,11 +7,11 @@ local config = {
 	timeToFightAgain = 20 * 60 * 60,
 	timeToDefeatBoss = 20 * 60,
 	playerPositions = {
-		{pos = Position(33854, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33855, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33856, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33857, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT},
-		{pos = Position(33858, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT}
+		{ pos = Position(33854, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33855, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33856, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33857, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT },
+		{ pos = Position(33858, 31854, 6), teleport = Position(33856, 31872, 7), effect = CONST_ME_TELEPORT }
 	},
 	specPos = {
 		from = Position(33847, 31858, 7),
@@ -26,5 +26,5 @@ function goshnarsCrueltyLever.onUse(player, item, fromPosition, target, toPositi
 	return CreateDefaultLeverBoss(player, config)
 end
 
-goshnarsCrueltyLever:position({x = 33853, y = 31854, z = 6})
+goshnarsCrueltyLever:position({ x = 33853, y = 31854, z = 6 })
 goshnarsCrueltyLever:register()
