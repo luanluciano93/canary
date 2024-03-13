@@ -136,18 +136,18 @@ public:
 		return buffer + HEADER_LENGTH;
 	}
 
-	#ifdef MEU_PROJETO_DEBUG
+#ifdef MEU_PROJETO_DEBUG
 	size_t getReadPos() const {
 		return readPos; // 'readPos' deve ser um membro da classe que rastreia a posição de leitura
 	}
 
-	void peekBytes(std::vector<uint8_t>& buffer) const {
+	void peekBytes(std::vector<uint8_t> &buffer) const {
 		size_t currentPosition = getReadPos();
-		for(size_t i = 0; i < buffer.size() && currentPosition < getLength(); ++i) {
+		for (size_t i = 0; i < buffer.size() && currentPosition < getLength(); ++i) {
 			buffer[i] = buffer[currentPosition++];
 		}
 	}
-	#endif
+#endif
 
 protected:
 	bool canAdd(size_t size) const {
@@ -170,7 +170,7 @@ protected:
 
 	NetworkMessageInfo info;
 	uint8_t buffer[NETWORKMESSAGE_MAXSIZE];
-	#ifdef MEU_PROJETO_DEBUG
+#ifdef MEU_PROJETO_DEBUG
 	size_t readPos;
-	#endif
+#endif
 };
