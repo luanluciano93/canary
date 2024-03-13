@@ -976,6 +976,20 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		return;
 	}
 
+	#ifdef MEU_PROJETO_DEBUG
+	std::string hexString = fmt::format("0x{:02x}", recvbyte);
+	size_t messageLength = msg.getLength();
+	std::vector<uint8_t> packetBytes(messageLength);
+	msg.peekBytes(packetBytes);
+
+	std::ostringstream logStream;
+	for(size_t i = 0; i < messageLength; ++i) {
+		logStream << "Byte[Pos:" << i << ", Value:" << fmt::format("{:02x}", static_cast<unsigned>(packetBytes[i])) << "] ";
+	}
+
+	g_logger().info("Player '{}' sent unknown packet header: hex[{}], decimal[{}] - {}", player->getName(), asUpperCaseString(hexString), recvbyte, logStream.str());
+	#endif
+
 	switch (recvbyte) {
 		case 0x14:
 			g_dispatcher().addEvent(std::bind(&ProtocolGame::logout, getThis(), true, false), "ProtocolGame::logout");
@@ -1165,6 +1179,12 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0x9A:
 			parseOpenPrivateChannel(msg);
 			break;
+		case 0x9B:
+			//parseGuildMessage(msg);
+			break;
+		case 0x9C:
+			//parseEditGuildMessage(msg);
+			break;
 		case 0x9E:
 			addGameTask(&Game::playerCloseNpcChannel, player->getID());
 			break;
@@ -1198,6 +1218,9 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xA8:
 			parseEnableSharedPartyExperience(msg);
 			break;
+		case 0xA9:
+			//parseDisbandParty(msg);
+			break;
 		case 0xAA:
 			addGameTask(&Game::playerCreatePrivateChannel, player->getID());
 			break;
@@ -1206,6 +1229,9 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 			break;
 		case 0xAC:
 			parseChannelExclude(msg);
+			break;
+		case 0xAD:
+			//parseCyclopediaHouseAction();
 			break;
 		case 0xAE:
 			parseSendBosstiary();
@@ -1231,6 +1257,24 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xC0:
 			parseForgeBrowseHistory(msg);
 			break;
+		case 0xC3:
+			//parseClaimTournamentReward(msg);
+			break;
+		case 0xC4:
+			//parseTournamentInformation(msg);
+			break;
+		case 0xC6:
+			//parseSubscribeToUpdates(msg);
+			break;
+		case 0xC7:
+			//parseTournamentLeaderboard(msg);
+			break;
+		case 0xC8:
+			//parseTournamentTicketAction(msg);
+			break;
+		case 0xC9:
+			//parseGetTransactionDetails(msg);
+			break;
 		case 0xC9: /* update tile */
 			break;
 		case 0xCA:
@@ -1244,6 +1288,18 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 			break;
 		case 0xCD:
 			parseInspectionObject(msg);
+			break;
+		case 0xCE:
+			//parseInspectionPlayer(msg);
+			break;
+		case 0xCF:
+			//parseBlessingsDialog(msg);
+			break;
+		case 0xD0:
+			//parseTrackQuestflags(msg);
+			break;
+		case 0xD1:
+			//parseMarketStatistics(msg);
 			break;
 		case 0xD2:
 			addGameTask(&Game::playerRequestOutfit, player->getID());
@@ -1264,6 +1320,18 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xD7:
 			parseCloseImbuementWindow(msg);
 			break;
+		case 0xD8:
+			//parseOpenRewardWall(msg);
+			break;
+		case 0xD9:
+			//parseDailyRewardHistory(msg);
+			break;
+		case 0xDA:
+			//parseCollectDailyReward(msg);
+			break;
+		case 0xDB:
+			//parseCyclopediaMapAction(msg);
+			break;
 		case 0xDC:
 			parseAddVip(msg);
 			break;
@@ -1272,6 +1340,9 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 			break;
 		case 0xDE:
 			parseEditVip(msg);
+			break;
+		case 0xDF:
+			//parseGroupVip(msg);
 			break;
 		case 0xE1:
 			parseBestiarysendRaces();
@@ -1297,8 +1368,17 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xE8:
 			parseDebugAssert(msg);
 			break;
+		case 0xE9:
+			//parseStoreEvent(msg);
+			break;
+		case 0xEA:
+			//parseFeatureEvent(msg);
+			break;
 		case 0xEB:
 			parsePreyAction(msg);
+			break;
+		case 0xEC:
+			//parseSetHirelingName(msg);
 			break;
 		case 0xED:
 			parseSendResourceBalance();
@@ -1306,15 +1386,18 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xEE:
 			parseGreet(msg);
 			break;
-		// Premium coins transfer
-		// case 0xEF: parseCoinTransfer(msg); break;
+		case 0xEF: /* premium coins transfer */
+			//parseCoinTransfer(msg);
+			break;
 		case 0xF0:
 			addGameTaskTimed(DISPATCHER_TASK_EXPIRATION, "Game::playerShowQuestLog", &Game::playerShowQuestLog, player->getID());
 			break;
 		case 0xF1:
 			parseQuestLine(msg);
 			break;
-		// case 0xF2: parseRuleViolationReport(msg); break;
+		case 0xF2:
+			//parseRuleViolationReport(msg);
+			break;
 		case 0xF3: /* get object info */
 			break;
 		case 0xF4:
@@ -1335,20 +1418,31 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xF9:
 			parseModalWindowAnswer(msg);
 			break;
+		case 0xFA:
+			//parseStoreOpen(msg);
+			break;
+		case 0xFB:
+			//parseStoreRequestOffers(msg);
+			break;
+		case 0xFC:
+			//parseStoreBuyOffer(msg);
+			break;
+		case 0xFD:
+			//parseStoreOpenTransactionHistory(msg);
+			break;
+		case 0xFE:
+			//parseStoreRequestTransactionHistory(msg);
+			break;
 		case 0xFF:
 			parseRewardChestCollect(msg);
 			break;
-			// case 0xFA: parseStoreOpen(msg); break;
-			// case 0xFB: parseStoreRequestOffers(msg); break;
-			// case 0xFC: parseStoreBuyOffer(msg) break;
-			// case 0xFD: parseStoreOpenTransactionHistory(msg); break;
-			// case 0xFE: parseStoreRequestTransactionHistory(msg); break;
 
-			// case 0xDF, 0xE0, 0xE1, 0xFB, 0xFC, 0xFD, 0xFE Premium Shop.
+			// case 0xDF, 0xE0, 0xE1 Premium Shop.
 
 		default:
 			std::string hexString = fmt::format("0x{:02x}", recvbyte);
 			g_logger().debug("Player '{}' sent unknown packet header: hex[{}], decimal[{}]", player->getName(), asUpperCaseString(hexString), recvbyte);
+	
 			break;
 	}
 }
