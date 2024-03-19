@@ -1275,8 +1275,6 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		case 0xC9:
 			// parseGetTransactionDetails(msg);
 			break;
-		case 0xC9: /* update tile */
-			break;
 		case 0xCA:
 			parseUpdateContainer(msg);
 			break;
