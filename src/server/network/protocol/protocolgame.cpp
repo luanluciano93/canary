@@ -976,7 +976,6 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 		return;
 	}
 
-#ifdef MEU_PROJETO_DEBUG
 	std::string hexString = fmt::format("0x{:02x}", recvbyte);
 	size_t messageLength = msg.getLength();
 	std::vector<uint8_t> packetBytes(messageLength);
@@ -984,11 +983,10 @@ void ProtocolGame::parsePacketFromDispatcher(NetworkMessage msg, uint8_t recvbyt
 
 	std::ostringstream logStream;
 	for (size_t i = 0; i < messageLength; ++i) {
-		logStream << "Byte[Pos:" << i << ", Value:" << fmt::format("{:02x}", static_cast<unsigned>(packetBytes[i])) << "] ";
+		logStream << "Byte[Pos:" << (i + 1) << ", Value:" << fmt::format("{:02x}", static_cast<unsigned>(packetBytes[i])) << "] ";
 	}
 
 	g_logger().info("Player '{}' sent unknown packet header: hex[{}], decimal[{}] - {}", player->getName(), asUpperCaseString(hexString), recvbyte, logStream.str());
-#endif
 
 	switch (recvbyte) {
 		case 0x14:

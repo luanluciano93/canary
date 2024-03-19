@@ -136,7 +136,6 @@ public:
 		return buffer + HEADER_LENGTH;
 	}
 
-#ifdef MEU_PROJETO_DEBUG
 	size_t getReadPos() const {
 		return readPos; // 'readPos' deve ser um membro da classe que rastreia a posição de leitura
 	}
@@ -147,7 +146,6 @@ public:
 			buffer[i] = buffer[currentPosition++];
 		}
 	}
-#endif
 
 protected:
 	bool canAdd(size_t size) const {
@@ -170,7 +168,5 @@ protected:
 
 	NetworkMessageInfo info;
 	uint8_t buffer[NETWORKMESSAGE_MAXSIZE];
-#ifdef MEU_PROJETO_DEBUG
 	size_t readPos;
-#endif
 };
