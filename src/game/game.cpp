@@ -419,6 +419,10 @@ void Game::setGameState(GameState_t newState) {
 		}
 
 		case GAME_STATE_SHUTDOWN: {
+			logger.info("Total save: {}", g_game().getImproveSave(1));
+			logger.info("Improve Save Stash: {}", g_game().getImproveSave(2));
+			logger.info("Improve Save Spells: {}", g_game().getImproveSave(3));
+			logger.info("Improve Save Kills: {}", g_game().getImproveSave(4));
 			g_globalEvents().execute(GLOBALEVENT_SHUTDOWN);
 
 			// kick all players that are still online
