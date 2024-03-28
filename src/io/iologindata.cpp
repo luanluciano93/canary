@@ -217,7 +217,7 @@ bool IOLoginData::savePlayerGuard(std::shared_ptr<Player> player) {
 
 	g_game().addImproveSave(1);
 
-		if (!IOLoginDataSave::savePlayerFirst(player)) {
+	if (!IOLoginDataSave::savePlayerFirst(player)) {
 		throw DatabaseException("[" + std::string(__FUNCTION__) + "] - Failed to save player first: " + player->getName());
 	}
 
