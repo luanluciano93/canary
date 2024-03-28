@@ -973,7 +973,7 @@ private:
 			return totalImproveSaveKills;
 		}
 	}
-															 
+
 	uint32_t totalImproveSave = 0;
 	uint32_t totalImproveSaveStash = 0;
 	uint32_t totalImproveSaveSpells = 0;
