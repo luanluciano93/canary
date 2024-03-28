@@ -948,30 +948,25 @@ private:
 	void addImproveSave(uint8_t x) {
 		if (x == 1) {
 			totalImproveSave++;
-		}
-		elseif(x == 2) {
+		} else if (x == 2) {
 			totalImproveSaveStash++;
-		}
-		elseif(x == 3) {
+		} else if (x == 3) {
 			totalImproveSaveSpells++;
-		}
-		elseif(x == 4) {
+		} else if (x == 4) {
 			totalImproveSaveKills++;
 		}
 	}
 	int32_t getImproveSave(uint8_t x) {
 		if (x == 1) {
 			return totalImproveSave;
-		}
-		elseif(x == 2) {
+		} else if (x == 2) {
 			return totalImproveSaveStash;
-		}
-		elseif(x == 3) {
+		} else if (x == 3) {
 			return totalImproveSaveSpells;
-		}
-		elseif(x == 4) {
+		} else if (x == 4) {
 			return totalImproveSaveKills;
 		}
+		return 0;
 	}
 
 	uint32_t totalImproveSave = 0;
