@@ -717,6 +717,32 @@ public:
 	std::vector<Achievement> getPublicAchievements();
 	std::map<uint16_t, Achievement> getAchievements();
 
+	bool hasSaveStash() {
+		return saveStash;
+	}
+	void addImproveSave(uint8_t x) {
+		if (x == 1) {
+			totalImproveSave++;
+		} elseif (x == 2) {
+			totalImproveSaveStash++;
+		} elseif (x == 3) {
+			totalImproveSaveSpells++;
+		} elseif (x == 4) {
+			totalImproveSaveKills++;
+		}
+	}
+	int32_t getImproveSave(uint8_t x) {
+		if (x == 1) {
+			return totalImproveSave;
+		} elseif (x == 2) {
+			return totalImproveSaveStash;
+		} elseif (x == 3) {
+			return totalImproveSaveSpells;
+		} elseif (x == 4) {
+			return totalImproveSaveKills;
+		}
+	}
+
 private:
 	std::map<uint16_t, Achievement> m_achievements;
 	std::map<std::string, uint16_t> m_achievementsNameToId;
