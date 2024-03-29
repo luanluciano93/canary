@@ -25,6 +25,7 @@
 #include "items/items_classification.hpp"
 #include "modal_window/modal_window.hpp"
 #include "enums/object_category.hpp"
+#include "lib/logging/logger.hpp"
 
 // Forward declaration for protobuf class
 namespace Canary {
