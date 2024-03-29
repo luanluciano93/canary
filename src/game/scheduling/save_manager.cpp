@@ -14,6 +14,10 @@ SaveManager &SaveManager::getInstance() {
 void SaveManager::saveAll() {
 	Benchmark bm_saveAll;
 	logger.info("Saving server...");
+	logger.info("Total save: {}", g_game().getImproveSave(1));
+	logger.info("Improve Save Stash: {}", g_game().getImproveSave(2));
+	logger.info("Improve Save Spells: {}", g_game().getImproveSave(3));
+	logger.info("Improve Save Kills: {}", g_game().getImproveSave(4));
 	const auto players = game.getPlayers();
 
 	for (const auto &[_, player] : players) {
