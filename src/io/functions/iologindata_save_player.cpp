@@ -802,6 +802,8 @@ bool IOLoginDataSave::savePlayerOutfits(std::shared_ptr<Player> player) {
 		return false;
 	}
 
+	auto inicio = std::chrono::high_resolution_clock::now();
+
 	Database &db = Database::getInstance();
 	std::ostringstream query;
 	query << "DELETE FROM `player_outfits` WHERE `player_id` = " << player->getGUID();
@@ -815,6 +817,7 @@ bool IOLoginDataSave::savePlayerOutfits(std::shared_ptr<Player> player) {
 
 	for (const auto &it : player->outfits) {
 		query << player->getGUID() << ',' << it.first << ',' << it.second;
+		std::cout << "addon: " << it.first << ", outfit" << it.second;
 		if (!outfitQuery.addRow(query)) {
 			return false;
 		}
@@ -823,6 +826,12 @@ bool IOLoginDataSave::savePlayerOutfits(std::shared_ptr<Player> player) {
 	if (!outfitQuery.execute()) {
 		return false;
 	}
+
+	auto resultado = std::chrono::high_resolution_clock::now() - inicio;
+    long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(resultado).count();
+    std::cout << "Tempo de execução de savePlayerOutfits: " << microseconds << " microssegundos\n";
+	std::cout << "Tamanho do mapa: " << player->outfits.size() << std::endl;
+
 	return true;
 }
 
