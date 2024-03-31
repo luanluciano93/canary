@@ -4130,7 +4130,7 @@ void ProtocolGame::sendTextMessage(const TextMessage &message) {
 	NetworkMessage msg;
 	msg.addByte(0xB4);
 	msg.addByte(internalType);
-	g_logger().debug("message.type = {}, internalType: {}.", message.type, internalType);
+	g_logger().info("message.type = {}, internalType: {}.", message.type, internalType);
 	switch (internalType) {
 		case MESSAGE_DAMAGE_DEALT:
 		case MESSAGE_DAMAGE_RECEIVED:
