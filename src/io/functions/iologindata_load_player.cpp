@@ -273,9 +273,9 @@ void IOLoginDataLoad::loadPlayerDefaultOutfit(std::shared_ptr<Player> player, DB
 	player->currentOutfit = player->defaultOutfit;
 
 	auto inicio = std::chrono::high_resolution_clock::now();
-	
+
 	Database &db = Database::getInstance();
-	
+
 	// load outfits & addons
 	std::ostringstream queryOutfits;
 	queryOutfits << "SELECT `outfit_id`, `addons` FROM `player_outfits` WHERE `player_id` = " << player->getGUID();
@@ -287,8 +287,8 @@ void IOLoginDataLoad::loadPlayerDefaultOutfit(std::shared_ptr<Player> player, DB
 	}
 
 	auto resultado = std::chrono::high_resolution_clock::now() - inicio;
-    long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(resultado).count();
-    std::cout << "Tempo de execução de loadPlayerDefaultOutfit: " << microseconds << " microssegundos\n";
+	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(resultado).count();
+	std::cout << "Tempo de execução de loadPlayerDefaultOutfit: " << microseconds << " microssegundos\n";
 	std::cout << "Tamanho do mapa: " << player->outfits.size() << std::endl;
 
 	// load mounts
@@ -296,7 +296,7 @@ void IOLoginDataLoad::loadPlayerDefaultOutfit(std::shared_ptr<Player> player, DB
 	queryMounts << "SELECT `mount_id` FROM `player_mounts` WHERE `player_id` = " << player->getGUID();
 	if ((result = db.storeQuery(queryMounts.str()))) {
 		do {
-			//player->outfits.emplace(result1->getNumber<uint16_t>("outfit_id"), result1->getNumber<uint8_t>("addons"));
+			// player->outfits.emplace(result1->getNumber<uint16_t>("outfit_id"), result1->getNumber<uint8_t>("addons"));
 			player->tameMount(result->getNumber<uint16_t>("mount_id"));
 		} while (result->next());
 	}

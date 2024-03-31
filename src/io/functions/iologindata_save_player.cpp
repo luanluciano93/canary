@@ -828,8 +828,8 @@ bool IOLoginDataSave::savePlayerOutfits(std::shared_ptr<Player> player) {
 	}
 
 	auto resultado = std::chrono::high_resolution_clock::now() - inicio;
-    long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(resultado).count();
-    std::cout << "Tempo de execução de savePlayerOutfits: " << microseconds << " microssegundos\n";
+	long long microseconds = std::chrono::duration_cast<std::chrono::microseconds>(resultado).count();
+	std::cout << "Tempo de execução de savePlayerOutfits: " << microseconds << " microssegundos\n";
 	std::cout << "Tamanho do mapa: " << player->outfits.size() << std::endl;
 
 	return true;
