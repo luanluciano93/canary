@@ -4092,7 +4092,7 @@ void ProtocolGame::sendTextMessage(const TextMessage &message) {
 				break;
 			}
 			case MESSAGE_MANA: {
-				internalType = MESSAGE_THANK_YOU;
+				internalType = MESSAGE_HEALED;
 				break;
 			}
 			case MESSAGE_BEYOND_LAST: {
@@ -4130,7 +4130,6 @@ void ProtocolGame::sendTextMessage(const TextMessage &message) {
 	NetworkMessage msg;
 	msg.addByte(0xB4);
 	msg.addByte(internalType);
-	g_logger().info("message.type = {}, internalType: {}.", message.type, internalType);
 	switch (internalType) {
 		case MESSAGE_DAMAGE_DEALT:
 		case MESSAGE_DAMAGE_RECEIVED:
@@ -4144,11 +4143,9 @@ void ProtocolGame::sendTextMessage(const TextMessage &message) {
 		}
 		case MESSAGE_HEALED:
 		case MESSAGE_HEALED_OTHERS: {
-			if (!oldProtocol) {
-				msg.addPosition(message.position);
-				msg.add<uint32_t>(message.primary.value);
-				msg.addByte(message.primary.color);
-			}
+			msg.addPosition(message.position);
+			msg.add<uint32_t>(message.primary.value);
+			msg.addByte(message.primary.color);
 			break;
 		}
 		case MESSAGE_EXPERIENCE:
