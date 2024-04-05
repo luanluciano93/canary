@@ -1099,6 +1099,32 @@ GameStore.Categories = {
 			},
 		},
 	},
+	-- Bundles
+	{
+		icons = { "Category_Bundles.png" },
+		name = "Bundles",
+		rookgaard = false,
+		state = GameStore.States.STATE_NONE,
+		offers = {
+			{
+				icons = { "Rotten_Blood_Bundle.png" },
+				name = "Rotten Blood Bundle",
+				price = 1500,
+				id = 3030,
+				description = "<u>Darkfire Devourer</u>\n{character}\n{speedboost}\n\n<u>Full Darklight Evoker Outfit</u>\n{character}\n{info} colours can be changed using the Outfit dialog\n{info} includes basic outfit and 2 addons which can be selected individually\n\n<u>Mask of the Defiler</u>\n{house}\n{box}\n{storeinbox}\n{use}\n{backtoinbox}\n\n<i>To those intrepid souls who ventured unafraid through the depths of hell, emerging as victors of their own fears. For those who dared to confront the most harrowing of horrors, a tribute is offered. O' you who unearthed radiant beams amidst the shrouded darkness, you are the valiant masters of the abyss.</i>",
+				type = GameStore.OfferTypes.OFFER_TYPE_BUNDLE,
+				offersBundle = {
+				{
+					icons = { "Armoured_War_Horse.png" },
+					name = "Armoured War Horse",
+					price = 870,
+					id = 23,
+					description = "{character}\n{speedboost}\n\n<i>The Armoured War Horse is a dangerous black beauty! When you see its threatening, blood-red eyes coming towards you, you'll know trouble is on its way. Protected by its heavy armour plates, the warhorse is the perfect partner for dangerous hunting sessions and excessive enemy slaughtering.</i>",
+					type = GameStore.OfferTypes.OFFER_TYPE_MOUNT,
+				},
+			},
+		},
+	},
 	-- Cosmetics
 	{
 		icons = { "Category_Cosmetics.png" },
