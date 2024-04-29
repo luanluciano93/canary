@@ -25,6 +25,7 @@
 #include "items/items_classification.hpp"
 #include "modal_window/modal_window.hpp"
 #include "enums/object_category.hpp"
+#include "lib/logging/logger.hpp"
 
 // Forward declaration for protobuf class
 namespace Canary {
@@ -717,6 +718,30 @@ public:
 	std::vector<Achievement> getPublicAchievements();
 	std::map<uint16_t, Achievement> getAchievements();
 
+	void addImproveSave(uint8_t x) {
+		if (x == 1) {
+			totalImproveSave++;
+		} else if (x == 2) {
+			totalImproveSaveStash++;
+		} else if (x == 3) {
+			totalImproveSaveSpells++;
+		} else if (x == 4) {
+			totalImproveSaveKills++;
+		}
+	}
+	int32_t getImproveSave(uint8_t x) {
+		if (x == 1) {
+			return totalImproveSave;
+		} else if (x == 2) {
+			return totalImproveSaveStash;
+		} else if (x == 3) {
+			return totalImproveSaveSpells;
+		} else if (x == 4) {
+			return totalImproveSaveKills;
+		}
+		return 0;
+	}
+
 private:
 	std::map<uint16_t, Achievement> m_achievements;
 	std::map<std::string, uint16_t> m_achievementsNameToId;
@@ -944,6 +969,11 @@ private:
 	std::string generateHighscoreQueryForOurRank(const std::string &categoryName, uint8_t entriesPerPage, uint32_t playerGUID, uint32_t vocation);
 	std::string generateHighscoreOrGetCachedQueryForEntries(const std::string &categoryName, uint32_t page, uint8_t entriesPerPage, uint32_t vocation);
 	std::string generateHighscoreOrGetCachedQueryForOurRank(const std::string &categoryName, uint8_t entriesPerPage, uint32_t playerGUID, uint32_t vocation);
+
+	uint32_t totalImproveSave = 0;
+	uint32_t totalImproveSaveStash = 0;
+	uint32_t totalImproveSaveSpells = 0;
+	uint32_t totalImproveSaveKills = 0;
 };
 
 constexpr auto g_game = Game::getInstance;
