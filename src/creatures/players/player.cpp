@@ -2150,12 +2150,30 @@ void Player::setNextPotionActionTask(std::shared_ptr<Task> task) {
 	}
 }
 
+void Player::setNextRuneActionTask(std::shared_ptr<Task> task) {
+	if (actionRuneTaskEvent != 0) {
+		g_dispatcher().stopEvent(actionRuneTaskEvent);
+		actionRuneTaskEvent = 0;
+	}
+
+	cancelPush();
+
+	if (task) {
+		actionRuneTaskEvent = g_dispatcher().scheduleEvent(task);
+		// resetIdleTime();
+	}
+}
+
 uint32_t Player::getNextActionTime() const {
 	return std::max<int64_t>(SCHEDULER_MINTICKS, nextAction - OTSYS_TIME());
 }
 
 uint32_t Player::getNextPotionActionTime() const {
 	return std::max<int64_t>(SCHEDULER_MINTICKS, nextPotionAction - OTSYS_TIME());
+}
+
+uint32_t Player::getNextRuneActionTime() const {
+	return std::max<int64_t>(SCHEDULER_MINTICKS, nextRuneAction - OTSYS_TIME());
 }
 
 void Player::cancelPush() {
