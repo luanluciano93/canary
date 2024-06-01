@@ -3645,8 +3645,10 @@ void Game::playerUseItemEx(uint32_t playerId, const Position &fromPos, uint8_t f
 				std::shared_ptr<Task> task = createPlayerTask(
 					400, [this, playerId, itemPos, itemStackPos, fromItemId, toPos, toStackPos, toItemId] { playerUseItemEx(playerId, itemPos, itemStackPos, fromItemId, toPos, toStackPos, toItemId); }, "Game::playerUseItemEx"
 				);
-				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+				if (it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
+				} else if (it.isRune()) {
+					player->setNextRuneActionTask(task);
 				} else {
 					player->setNextWalkActionTask(task);
 				}
@@ -3661,20 +3663,26 @@ void Game::playerUseItemEx(uint32_t playerId, const Position &fromPos, uint8_t f
 	}
 
 	bool canDoAction = player->canDoAction();
-	if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+	if (it.type == ITEM_TYPE_POTION) {
 		canDoAction = player->canDoPotionAction();
+	} else if (it.isRune()) {
+		canDoAction = player->canDoRuneAction();
 	}
 
 	if (!canDoAction) {
 		uint32_t delay = player->getNextActionTime();
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			delay = player->getNextPotionActionTime();
+		} else if (it.isRune()) {
+			delay = player->getNextRuneActionTime();
 		}
 		std::shared_ptr<Task> task = createPlayerTask(
 			delay, [this, playerId, fromPos, fromStackPos, fromItemId, toPos, toStackPos, toItemId] { playerUseItemEx(playerId, fromPos, fromStackPos, fromItemId, toPos, toStackPos, toItemId); }, "Game::playerUseItemEx"
 		);
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			player->setNextPotionActionTask(task);
+		} else if (it.isRune()) {
+			player->setNextRuneActionTask(task);
 		} else {
 			player->setNextActionTask(task);
 		}
@@ -3682,8 +3690,10 @@ void Game::playerUseItemEx(uint32_t playerId, const Position &fromPos, uint8_t f
 	}
 
 	player->resetIdleTime();
-	if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+	if (it.type == ITEM_TYPE_POTION) {
 		player->setNextPotionActionTask(nullptr);
+	} else if (it.isRune()) {
+		player->setNextRuneActionTask(nullptr);
 	} else {
 		player->setNextActionTask(nullptr);
 	}
@@ -3759,8 +3769,10 @@ void Game::playerUseItem(uint32_t playerId, const Position &pos, uint8_t stackPo
 				std::shared_ptr<Task> task = createPlayerTask(
 					400, [this, playerId, pos, stackPos, index, itemId] { playerUseItem(playerId, pos, stackPos, index, itemId); }, "Game::playerUseItem"
 				);
-				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+				if (it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
+				} else if (it.isRune()) {
+					player->setNextRuneActionTask(task);
 				} else {
 					player->setNextWalkActionTask(task);
 				}
@@ -3775,20 +3787,26 @@ void Game::playerUseItem(uint32_t playerId, const Position &pos, uint8_t stackPo
 	}
 
 	bool canDoAction = player->canDoAction();
-	if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+	if (it.type == ITEM_TYPE_POTION) {
 		canDoAction = player->canDoPotionAction();
+	} else if (it.isRune()) {
+		canDoAction = player->canDoRuneAction();
 	}
 
 	if (!canDoAction) {
 		uint32_t delay = player->getNextActionTime();
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			delay = player->getNextPotionActionTime();
+		} else if (it.isRune()) {
+			delay = player->getNextRuneActionTime();
 		}
 		std::shared_ptr<Task> task = createPlayerTask(
 			delay, [this, playerId, pos, stackPos, index, itemId] { playerUseItem(playerId, pos, stackPos, index, itemId); }, "Game::playerUseItem"
 		);
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			player->setNextPotionActionTask(task);
+		} else if (it.isRune()) {
+			player->setNextRuneActionTask(task);
 		} else {
 			player->setNextActionTask(task);
 		}
@@ -3919,8 +3937,10 @@ void Game::playerUseWithCreature(uint32_t playerId, const Position &fromPos, uin
 					},
 					"Game::playerUseWithCreature"
 				);
-				if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+				if (it.type == ITEM_TYPE_POTION) {
 					player->setNextPotionActionTask(task);
+				} else if (it.isRune()) {
+					player->setNextRuneActionTask(task);
 				} else {
 					player->setNextWalkActionTask(task);
 				}
@@ -3935,21 +3955,27 @@ void Game::playerUseWithCreature(uint32_t playerId, const Position &fromPos, uin
 	}
 
 	bool canDoAction = player->canDoAction();
-	if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+	if (it.type == ITEM_TYPE_POTION) {
 		canDoAction = player->canDoPotionAction();
+	} else if (it.isRune()) {
+		canDoAction = player->canDoRuneAction();
 	}
 
 	if (!canDoAction) {
 		uint32_t delay = player->getNextActionTime();
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			delay = player->getNextPotionActionTime();
+		} else if (it.isRune()) {
+			delay = player->getNextRuneActionTime();
 		}
 		std::shared_ptr<Task> task = createPlayerTask(
 			delay, [this, playerId, fromPos, fromStackPos, creatureId, itemId] { playerUseWithCreature(playerId, fromPos, fromStackPos, creatureId, itemId); }, "Game::playerUseWithCreature"
 		);
 
-		if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+		if (it.type == ITEM_TYPE_POTION) {
 			player->setNextPotionActionTask(task);
+		} else if (it.isRune()) {
+			player->setNextRuneActionTask(task);
 		} else {
 			player->setNextActionTask(task);
 		}
@@ -3957,8 +3983,10 @@ void Game::playerUseWithCreature(uint32_t playerId, const Position &fromPos, uin
 	}
 
 	player->resetIdleTime();
-	if (it.isRune() || it.type == ITEM_TYPE_POTION) {
+	if (it.type == ITEM_TYPE_POTION) {
 		player->setNextPotionActionTask(nullptr);
+	} else if (it.isRune()) {
+		player->setNextRuneActionTask(nullptr);
 	} else {
 		player->setNextActionTask(nullptr);
 	}
