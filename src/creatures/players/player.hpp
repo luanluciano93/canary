@@ -1757,6 +1757,15 @@ public:
 		return nextPotionAction <= OTSYS_TIME();
 	}
 
+	void setNextRuneAction(int64_t time) {
+		if (time > nextRuneAction) {
+			nextRuneAction = time;
+		}
+	}
+	bool canDoRuneAction() const {
+		return nextRuneAction <= OTSYS_TIME();
+	}
+
 	void cancelPush();
 
 	void setModuleDelay(uint8_t byteortype, int16_t delay) {
@@ -1772,6 +1781,7 @@ public:
 
 	uint32_t getNextActionTime() const;
 	uint32_t getNextPotionActionTime() const;
+	uint32_t getNextRuneActionTime() const;
 
 	std::shared_ptr<Item> getWriteItem(uint32_t &windowTextId, uint16_t &maxWriteLen);
 	void setWriteItem(std::shared_ptr<Item> item, uint16_t maxWriteLen = 0);
@@ -2685,6 +2695,7 @@ private:
 	void setNextActionTask(std::shared_ptr<Task> task, bool resetIdleTime = true);
 	void setNextActionPushTask(std::shared_ptr<Task> task);
 	void setNextPotionActionTask(std::shared_ptr<Task> task);
+	void setNextRuneActionTask(std::shared_ptr<Task> task);
 
 	void death(std::shared_ptr<Creature> lastHitCreature) override;
 	bool spawn();
@@ -2803,6 +2814,7 @@ private:
 	int64_t lastPong;
 	int64_t nextAction = 0;
 	int64_t nextPotionAction = 0;
+	int64_t nextRuneAction = 0;
 	int64_t lastQuickLootNotification = 0;
 	int64_t lastWalking = 0;
 	uint64_t asyncOngoingTasks = 0;
@@ -2841,6 +2853,7 @@ private:
 	uint32_t actionTaskEvent = 0;
 	uint32_t actionTaskEventPush = 0;
 	uint32_t actionPotionTaskEvent = 0;
+	uint32_t actionRuneTaskEvent = 0;
 	uint32_t nextStepEvent = 0;
 	uint32_t walkTaskEvent = 0;
 	uint32_t MessageBufferTicks = 0;
