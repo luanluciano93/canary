@@ -432,7 +432,7 @@ void IOLoginData::removeGuidVIPGroupEntry(uint32_t accountId, uint32_t guid) {
 
 void IOLoginData::updateOnlineStatus(uint32_t guid, bool login) {
 	if (login) {
-		g_database().executeQuery(fmt::format("INSERT INTO `players_online` VALUES ({:d})", guid);
+		g_database().executeQuery(fmt::format("INSERT INTO `players_online` VALUES ({:d})", guid));
 	} else {
 		g_database().executeQuery(fmt::format("DELETE FROM `players_online` WHERE `player_id` = {:d}", guid));
 	}
