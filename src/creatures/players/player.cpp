@@ -9921,6 +9921,7 @@ void Player::onRemoveCreature(const std::shared_ptr<Creature> &creature, bool is
 		closeShopWindow();
 
 		g_saveManager().savePlayer(player);
+		IOLoginData::updateOnlineStatus(guid, false);
 	}
 
 	if (creature == shopOwner) {
