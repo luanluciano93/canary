@@ -443,3 +443,11 @@ void IOLoginData::removeGuidVIPGroupEntry(uint32_t accountId, uint32_t guid) {
 	std::string query = fmt::format("DELETE FROM `account_vipgrouplist` WHERE `account_id` = {} AND `player_id` = {}", accountId, guid);
 	g_database().executeQuery(query);
 }
+
+void IOLoginData::updateOnlineStatus(uint32_t guid, bool login) {
+	if (login) {
+		g_database().executeQuery(fmt::format("INSERT IGNORE INTO `players_online` VALUES ({:d})", guid));
+	} else {
+		g_database().executeQuery(fmt::format("DELETE FROM `players_online` WHERE `player_id` = {:d}", guid));
+	}
+}
