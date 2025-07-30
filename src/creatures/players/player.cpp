@@ -10690,6 +10690,8 @@ void Player::onCreatureAppear(const std::shared_ptr<Creature> &creature, bool is
 		}
 
 		g_game().changePlayerSpeed(static_self_cast<Player>(), 0);
+
+		IOLoginData::updateOnlineStatus(guid, true);
 	}
 }
 
@@ -10725,6 +10727,7 @@ void Player::onRemoveCreature(const std::shared_ptr<Creature> &creature, bool is
 		closeShopWindow();
 
 		g_saveManager().savePlayer(player);
+		IOLoginData::updateOnlineStatus(guid, false);
 	}
 
 	if (creature == shopOwner) {
