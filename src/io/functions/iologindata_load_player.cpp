@@ -29,6 +29,7 @@
 #include "creatures/players/player.hpp"
 #include "utils/tools.hpp"
 #include "io/player_storage_repository.hpp"
+#include "kv/kv.hpp"
 
 void IOLoginDataLoad::loadItems(ItemsMap &itemsMap, const DBResult_ptr &result, const std::shared_ptr<Player> &player) {
 	try {
@@ -1013,6 +1014,15 @@ void IOLoginDataLoad::loadPlayerInitializeSystem(const std::shared_ptr<Player> &
 
 	player->initializePrey();
 	player->initializeTaskHunting();
+	// Load and apply the player's Virtue from the saved spell data, if available
+	auto kv = player->kv()->scoped("spells");
+	if (auto kvOpt = kv->get("virtue")) {
+		player->setVirtue(static_cast<Virtue_t>(kvOpt->getNumber()));
+	}
+
+	if (auto kvOpt = kv->get("harmony")) {
+		player->setHarmony(kvOpt->getNumber());
+	}
 }
 
 void IOLoginDataLoad::loadPlayerUpdateSystem(const std::shared_ptr<Player> &player) {
@@ -1024,4 +1034,50 @@ void IOLoginDataLoad::loadPlayerUpdateSystem(const std::shared_ptr<Player> &play
 	player->updateBaseSpeed();
 	player->updateInventoryWeight();
 	player->updateItemsLight(true);
+}
+
+void IOLoginDataLoad::loadPlayerExivaRestrictions(const std::shared_ptr<Player> &player) {
+	if (!player) {
+		g_logger().warn("[{}] - Player nullptr", __FUNCTION__);
+		return;
+	}
+
+	auto &restrictions = player->getExivaRestrictions();
+
+	const auto &scope = player->kv()->scoped("exiva-restrictions");
+
+	if (auto v = scope->get("allowAll")) {
+		restrictions.allowAll = v->getNumber() != 0;
+	}
+	if (auto v = scope->get("allowOwnGuild")) {
+		restrictions.allowOwnGuild = v->getNumber() != 0;
+	}
+	if (auto v = scope->get("allowOwnParty")) {
+		restrictions.allowOwnParty = v->getNumber() != 0;
+	}
+	if (auto v = scope->get("allowVipList")) {
+		restrictions.allowVipList = v->getNumber() != 0;
+	}
+	if (auto v = scope->get("allowPlayerWhitelist")) {
+		restrictions.allowPlayerWhitelist = v->getNumber() != 0;
+	}
+	if (auto v = scope->get("allowGuildWhitelist")) {
+		restrictions.allowGuildWhitelist = v->getNumber() != 0;
+	}
+
+	const auto playerWhitelistOpt = scope->get("playerWhitelist");
+	if (playerWhitelistOpt.has_value()) {
+		const auto playerWhitelist = playerWhitelistOpt.value().get<ArrayType>();
+		for (const auto &playerGuid : playerWhitelist) {
+			restrictions.playerWhitelist.push_back(playerGuid.get<IntType>());
+		}
+	}
+
+	const auto guildWhitelistOpt = scope->get("guildWhitelist");
+	if (guildWhitelistOpt.has_value()) {
+		const auto guildWhitelist = guildWhitelistOpt.value().get<ArrayType>();
+		for (const auto &guildId : guildWhitelist) {
+			restrictions.guildWhitelist.push_back(guildId.get<IntType>());
+		}
+	}
 }
